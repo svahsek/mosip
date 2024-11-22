@@ -58,7 +58,7 @@ This section is for the developers to run mock-abis locally against MOSIP server
 4) Download the latest kernel-auth-adapter from
 `https://mvnrepository.com/artifact/io.mosip.kernel/kernel-auth-adapter`and save into `lib` folder.
 
-* Build the code: `mvn clean install-Dmaven.test.skip=true -Dgpg.skip=true`. <!-- double check this step ..put this as corrected above -->
+* Build the code: `mvn clean install`. <!-- double check this step ..put this as corrected above -->
 
 * Run the jar: 
 
@@ -110,71 +110,50 @@ Steps:
 3) Update `registration-processor-abis.json` with the correct queue details.
 
 ``` json
- {
-"abis": [
-
- {
-
- "name": "ABIS",
-
- "host": "",
-
- "port": "",
-
- "brokerUrl": "tcp://{env}.mosip.net: {port}",
-
- "inboundQueueName": "ctk-to-abis ",
-
- "outboundQueueName": "abis-to-ctk ",
-
- "pingInboundQueueName": "ctk-to-abis ",
-
- "pingOutboundQueueName": "abis-to-ctk ",
-
- "userName": "artemis",
-
- "password": "{password}",
-
- "typeOfQueue": "ACTIVEMQ",
-
- "inboundMessageTTL": 2700
-
- }
-
- ]
-
- }
+{
+  "abis": [
+    {
+      "name": "ABIS",
+      "host": "",
+      "port": "",
+      "brokerUrl": "tcp://{env}.mosip.net: {port}",
+      "inboundQueueName": "ctk-to-abis ",
+      "outboundQueueName": "abis-to-ctk ",
+      "pingInboundQueueName": "ctk-to-abis ",
+      "pingOutboundQueueName": "abis-to-ctk ",
+      "userName": "artemis",
+      "password": "{password}",
+      "typeOfQueue": "ACTIVEMQ",
+      "inboundMessageTTL": 2700
+    }
+  ]
+}
  ```
 
-4) * for local database we use following
+4) for local database we use following
 
 ``` 
 javax.persistence.jdbc.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
-
 javax.persistence.jdbc.driver=org.h2.Driver
-
 javax.persistence.jdbc.user=sa
-
 javax.persistence.jdbc.password=sa
-
 hibernate.ddl-auto=update
-
-hibernate.temp.use_jdbc_metadata_defaults = false
-
-hibernate.dialect = org.hibernate.dialect.H2Dialect
+hibernate.temp.use_jdbc_metadata_defaults=false
+hibernate.dialect=org.hibernate.dialect.H2Dialect
 ```
 
 5) Download the latest kernel-auth-adapter from `https://mvnrepository.com/artifact/io.mosip.kernel/kernel-auth-adapter` and save into `lib` folder.
 
-* Build the code: `mvn` clean install -Dmaven.test.skip=true -Dgpg.skip=true`.
+* Build the code: `mvn clean install -Dgpg.skip=true`.
 
 * Run the jar: 
 
-`java
--Dloader.path=lib/kernel-auth-adapter-1.3.0-SNAPSHOT.jar
+```
+java
+-Dloader.path=lib/kernel-auth-adapter-1.3.0-SNAPSHOT.jar`
+
 -Dlocal.development=true -Dabis.bio.encryption=true
--Dspring.profiles.active=local -Dmosip_host=https://<server
-[hostname]{.underline}> --add-opens
+-Dspring.profiles.active=local -Dmosip_host=https://<server hostname> --add-opens
 java.xml/jdk.xml.internal=ALL-UNNAMED --add-opens
 java.base/java.lang.reflect=ALL-UNNAMED --add-opens
 java.base/java.lang.stream=ALL-UNNAMED --add-opens
@@ -185,10 +164,12 @@ java.base/java.io.Reader=ALL-UNNAMED --add-opens
 java.base/java.util.Optional=ALL-UNNAMED --add-opens
 java.base/java.time.LocalDateTime.date=ALL-UNNAMED -jar
 target/mock-abis-1.3.0-SNAPSHOT.jar`.
+```
 
 * Add message directly to queue and view responses from mock ABIS
 
-Flags:
+**Flags:**
+
 
 * local.development (true: whenever running locally)
 
@@ -212,7 +193,7 @@ Url: http://{host}/v1/mock-abis-service/config/configure
 
 **Request:**
 
-```[json]{.underline}
+```json
 
 {
 
@@ -238,7 +219,7 @@ Url: http://{host}/v1/mock-abis-service/config/configure
 
 **Response:**
 
-```[json]{.underline}
+```json
 
 {
 
@@ -256,38 +237,24 @@ Url: http://{host}/v1/mock-abis-service/config/expectation
 
 **Request:**
 
-```[json]{.underline}
+```json
 
 {
+  "id": "<Hash of the biometric>",
+  "version": "[xxxxx]",
+  "requesttime": "2021-05-05T05:44:58.525Z",
+  "actionToInterfere": "Identify/Insert",
+  "forcedResponse": "Error",
+  "errorCode": "",
+  "delayInExecution": "",
+  "gallery": {
+    "referenceIds": [
+      {
+        "referenceId": "<Hash of the duplicate biometric>"   
 
-"id": "<Hash of the [biometric]{.underline}>",
-
-"version": "[xxxxx]{.underline}",
-
-"[requesttime]{.underline}": "2021-05-05T05:44:58.525Z",
-
-"actionToInterfere": "Identify/ Insert",
-
-"forcedResponse": "Error",
-
-"errorCode": "",
-
-"delayInExecution": "",
-
-"gallery": {
-
-"referenceIds": [
-
-{
-
-"referenceId": "<Hash of the duplicate [biometric]{.underline}>"
-
-}
-
-]
-
-}
-
+      }
+    ]
+  }
 }
 
 ```
@@ -311,85 +278,46 @@ Url: http://{host}/v1/mock-abis-service/config/expectation
 ```json
 
 {
+  "abshd": {
+    "id": "abshd",
+    "version": "xxxxx",
+    "requesttime": "2021-05-05T05:44:58.525Z",
+    "actionToInterfere": "Identify/Insert",
+    "forcedResponse": "Error/Success",
+    "errorCode": "",
+    "delayInExecution": "",
+    "gallery": {
+      "referenceIds": [
+        {
+          "referenceId": "xxxxxx"
+        },
+        {
+          "referenceId": "xxxxxx"
+        }
+      ]
+    }
+  },
+  "dffefe": {
+    "id": "dffefe",
+    "version": "xxxxx",
+    "requesttime": "2021-05-05T05:44:58.525Z",
+    "actionToInterfere": "Identify/Insert",
+    "forcedResponse": "Error/Success",
+    "errorCode": "",
+    "delayInExecution": "",
+    "gallery": {
+      "referenceIds": [
+        {
+          "referenceId": "xxxx"
+        },
+        {
+          "referenceId": "xxxxxx"   
 
-"[abshd]{.underline}": {
-
-"id": "[abshd]{.underline}",
-
-"version": "[xxxxx]{.underline}",
-
-"[requesttime]{.underline}": "2021-05-05T05:44:58.525Z",
-
-"actionToInterfere": "Identify/ Insert",
-
-"errorCode": "",
-
-"delayInExecution": "",
-
-"forcedResponse": "Error/Success",
-
-"gallery": {
-
-"referenceIds": [
-
-{
-
-"referenceId": "[xxxxxx]{.underline}"
-
-},
-
-{
-
-"referenceId": "[xxxxxx]{.underline}"
-
+        }
+      ]
+    }
+  }
 }
-
-]
-
-}
-
-},
-
-"dffefe": {
-
-"id": "dffefe",
-
-"version": "xxxxx",
-
-"requesttime": "2021-05-05T05:44:58.525Z",
-
-"actionToInterfere": "Identify/ Insert",
-
-"forcedResponse": "Error/Success",
-
-"errorCode": "",
-
-"delayInExecution": "",
-
-"gallery": {
-
-"referenceIds": [
-
-{
-
-"referenceId": "xxxx"
-
-},
-
-{
-
-"referenceId": "xxxxxx"
-
-}
-
-]
-
-}
-
-}
-
-}
-
 ```
 
 ### Delete Expectation
@@ -427,8 +355,7 @@ efficiently
 1) Use local profile: `-Dspring.profiles.active=local`. Pass this as
 VM options
 
-2) Pass: `mosip_host=https://<mosip host>` as [env]{.underline}
-variable.
+2) Pass: `mosip_host=https://<mosip host>` as env variable.
 
 3) Setting ABIS queue conf:
 
@@ -437,8 +364,7 @@ variable.
 * Copy the contents of `registration-processor-abis-sample.json` to
 `registration-processor-abis.json`
 
-* Update `registration-processor-abis.json` with the correct queue
-details
+* Update `registration-processor-abis.json` with the correct queue details
 
 By performing the above steps, you are ready to run mock-ABIS in local
 machine
@@ -450,16 +376,16 @@ API documentation is available
 
 ## License
 
-This project is licensed under the terms of [Mozilla] Public License 2.0](LICENSE).
+This project is licensed under the terms of [Mozilla] Public License 2.0(LICENSE).
+
+
+
+
+
+
+<!-- For Keshav?
 
 D:ProjectMosiptest > git clone https://github.com/mosip/mosip-mock-services.git
-
-
-
-
-
-<!-- For Keshav? -->
-
 
 
 **Cloning into `mosip-mock-services`...**
@@ -486,3 +412,5 @@ D:ProjectMosiptestmosip-mock-services>cd mock-abis
 
 D:ProjectMosiptestmosip-mock-servicesmock-abis>mvn clean
 install -Dgpg.skip=true
+
+-->
