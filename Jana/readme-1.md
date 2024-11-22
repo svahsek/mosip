@@ -6,37 +6,27 @@
 - This module also provides swagger API to test only INSERT/IDENTIFY functionality.
 
 ## Requirements
-- Put the 'Partner Certificate' cbeff.p12 into resource folder (in case of encryption is enabled).
-<!--
-Which Partner Certificate?
-Can we refer to some topic here which explains this?
-It is saying  we are putting cbeff.p12 into resource folder - Can we point to this within topic here itself (as bookmark)?
--->
+- Put the 'Partner Certificate' `cbeff.p12` into resource folder (in case the encryption is enabled).
 - Setup - In case of partner based encryption. Upload the certificate by using swagger upload certificate request.
-<!--
-Can we also mention the steps 
--->
+
 
 # Docker based Server deployment (for sandbox deployment)
 
- <!-- Can we explain this -->
 
 **Steps**:
 
-* Go to REPO_ROOT/mock-abis. <!-- You are saying go to mock-abis repo under MOSIP root repo and in next step you are saying build the code -->
+* Go `to REPO_ROOT/mock-abis`.
 
 * Build the code: `mvn clean install -Dgpg.skip=true`.
 
-* Create a docker image: docker build. --file Dockerfile --tag mock-abis. <!-- Create docker image? -->
+* Create a docker image: docker build. --file Dockerfile --tag mock-abis.
 
-* Push the `docket.underline` image to docker registry. You can also directly use these images for running mock ABIS. <!-- move it to docker registry .... and cal also run it directly? -->
+* Push the `docket.underline` image to docker registry. You can also directly use these images for running mock ABIS.
 -- 
 
 **Please check Dockerfile for passing env properties**
 
 Swagger url:`https://<hostname>/v1/mock-abis-service/swagger-ui.html#/`
-
-
 
 
 # Local dev against Server (for testing against server)
@@ -45,36 +35,38 @@ This section is for the developers to run mock-abis locally against MOSIP server
 
 **Steps**:
 
-* Go to REPO_ROOT/mock-abis.
+* Go to `REPO_ROOT/mock-abis`.
 
 * Setting ABIS queue conf (here queue details will be for server's queue):
 
-1) Create registration-processor-abis.json in resources.
+    - Create registration-processor-abis.json in resources.
 
-2) Copy the contents of registration-processor-abis-sample.json to registration-processor-abis.json.
+    - Copy the contents of registration-processor-abis-sample.json to registration-processor-abis.json.
 
-3) Update registration-processor-abis.json with the correct queue details. <!-- what is correct queue detail, can we explain this as well -->
+    - Update registration-processor-abis.json with the correct queue details.
 
-4) Download the latest kernel-auth-adapter from
+    - Download the latest kernel-auth-adapter from
 `https://mvnrepository.com/artifact/io.mosip.kernel/kernel-auth-adapter`and save into `lib` folder.
 
-* Build the code: `mvn clean install`. <!-- double check this step ..put this as corrected above -->
+* Build the code: `mvn clean install -Dgpg.skip=true`.
 
 * Run the jar: 
 
-    `java
-    -Dloader.path=lib/kernel-auth-adapter-1.3.0-SNAPSHOT.jar` <!-- Do we have D as path to directory? -->
+```
+    java
+    -Dloader.path=lib/kernel-auth-adapter-1.3.0-SNAPSHOT.jar
 
-    ` -Dlocal.development=true -Dabis.bio.encryption=true
--Dspring.profiles.active=local -Dmosip_host=https://<server hostname> -jar target/mock-abis-1.3.0-SNAPSHOT.jar.`
+    -Dlocal.development=true -Dabis.bio.encryption=true
+    -Dspring.profiles.active=local -Dmosip_host=https://<server hostname> -jar target/mock-abis-1.3.0-SNAPSHOT.jar.`
+```
 
-Flags:
+**Flags:**
 
-* local.development (true: whenever running locally, this will take the registration-processor-abis.json from resources)
+* `local.development` (`true`: whenever running locally, this will take the `registration-processor-abis.json` from resources)
 
-* abis.bio.encryption (true: in case if partner based encryption)
+* `abis.bio.encryption` (`true`: in case if partner based encryption)
 
-* mosip_host ([hostname]{.underline} of the MOSIP server)
+* `mosip_host` (hostname of the MOSIP server)
 
 * Swagger url: `http://localhost:8081/v1/mock-abis-service/swagger-ui.html#/`
 
@@ -86,20 +78,20 @@ This section is for developers to run mock-abis locally against a queue, message
 
 ## Requirements:
 
-* Local ActiveMQ server - 
+* Local ActiveMQ server:
 
 ### Running ActiveMQ locally:
 
-* Go to REPO_ROOT/mock-abis/activemq
+* Go to `REPO_ROOT/mock-abis/activemq`
 
 * Use the docker compose file to create a local activemq server: `docker-compose up`
 
 * Open activemq: `http://localhost:8161/`
 
 
-Steps:
+**Steps:**
 
-* Go to REPO_ROOT/mock-abis.
+* Go to `REPO_ROOT/mock-abis`.
 
 * Setting ABIS queue conf (here queue details will be for local queue):
 
@@ -142,7 +134,7 @@ hibernate.temp.use_jdbc_metadata_defaults=false
 hibernate.dialect=org.hibernate.dialect.H2Dialect
 ```
 
-5) Download the latest kernel-auth-adapter from `https://mvnrepository.com/artifact/io.mosip.kernel/kernel-auth-adapter` and save into `lib` folder.
+5) Download the latest `kernel-auth-adapter` from `https://mvnrepository.com/artifact/io.mosip.kernel/kernel-auth-adapter` and save into `lib` folder.
 
 * Build the code: `mvn clean install -Dgpg.skip=true`.
 
@@ -171,11 +163,11 @@ target/mock-abis-1.3.0-SNAPSHOT.jar`.
 **Flags:**
 
 
-* local.development (true: whenever running locally)
+* `local.development` (`true`: whenever running locally)
 
-* abis.bio.encryption (true: in case if partner based encryption)
+* `abis.bio.encryption` (`true`: in case if partner based encryption)
 
-* mosip_host (hostname of the MOSIP server)
+* `mosip_host` (hostname of the MOSIP server)
 
 Swagger URL:`http://localhost:8081/v1/mock-abis-service/swagger-ui/index.html#/`
 
@@ -336,8 +328,7 @@ Successfully deleted expectation $expectation_id
 
 ## Tips & tricks
 
-1) While setting the expectation the hash of [iso]{.underline} image
-should be taken, directly taking [bdb]{.underline} hash will not work.
+1) While setting the expectation the hash of iso image should be taken, directly taking bdb hash will not work.
 
 ```text
 
@@ -345,15 +336,13 @@ formula for hash: SHA256_hash(base64_decode(bdb))
 
 ```
 
-2) Use get cached biometics to check whether the hashes are proper.
+2) Use get cached biometrics to check whether the hashes are proper.
 
 ## Developer (tips and trick)
 
-This section is for the developers, for developing this modules fast &
-efficiently
+This section is for the developers, for developing this modules fast & efficiently
 
-1) Use local profile: `-Dspring.profiles.active=local`. Pass this as
-VM options
+1) Use local profile: `-Dspring.profiles.active=local`. Pass this as VM options
 
 2) Pass: `mosip_host=https://<mosip host>` as env variable.
 
@@ -366,8 +355,7 @@ VM options
 
 * Update `registration-processor-abis.json` with the correct queue details
 
-By performing the above steps, you are ready to run mock-ABIS in local
-machine
+By performing the above steps, you are ready to run mock-ABIS in local machine
 
 ## APIs
 
