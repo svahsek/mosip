@@ -242,7 +242,7 @@ Url: http://{host}/v1/mock-abis-service/config/expectation
   "gallery": {
     "referenceIds": [
       {
-        "referenceId": "<Hash of the duplicate biometric>"   
+        "referenceId": "<Hash of the duplicate biometric>"
 
       }
     ]
