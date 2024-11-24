@@ -1,62 +1,8 @@
-
-Study Centre (SC), BES College of Arts & Science
-Jayanagar 4th`T’ Blk, Bangalore 560 011
-
-IGNOU, SC St. Aloysius College, Kodial bail Mangalore 575 003
-
-IGNOU Study Centre, Vidya-vardhaka First Grade College,
-Seshadri Iyer Road, Mysore 570 021.
-
-IGNOU, SC, D.V.S. College of Arts & Sc.,Basaveshwara
-Circle, Shimoga 577201.
-
-IGNOU, SC, Al-Ameen Arts,Sc & com. College, Opp.
-Lalbagh Main Gate,Hosur Rd Bangalore 560 027.
-
-IGNOU SC B.I.E.T. Campus, Shamanur Road, Davangere577 004. 
-
-IGNOU SC, Central Prison, Parappana Agrahara, Electronic
-City, Bangalore 560100
-
-IGNOU SC, Bangalore Institute of Technology, K.R. Road,
-V.V.Puram, Bangalore– 560 004 
-
-IGNOU PSC, SJCE, Manasagangotri,
-Mysore 570 006,
-
-IGNOU SC, Siddhartha Institute of Technology, Kunigal
-Road, Maralur, Tumkur 572105 
-
-
-
-
-
-
-
-
-
 Acknowledgement
 
 
 
-
-
-
-
-
 https://drive.google.com/drive/u/0/folders/1-u0DSeruhgNlG8XsTe3vwlm71ewJvvz2
-
-Internet Banking users
-
- 	
-iMobile app users
-
-Step1:Login to ICICI Bank Internet Banking after 60 minutes
-Step2:Click on 'Cards & Loans'->'Credit Cards'->'Manage Your Card'
-Step3:Choose your Credit Card
-Step4:Under 'Manage Credit Card Usage' Click on Edit
-Step5:Enable online transactions
-Step6:Enter OTP sent your registered mobile number and click on Submit
 
 
 
