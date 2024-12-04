@@ -72,7 +72,7 @@ Swagger url: [Swagger UI](http://localhost:8098/v1/converter-service/swagger-ui/
 Default channel is HTTP (POST)
 
 ## APIs for configuration and Expectation setting
-[Sample expectations](./docs/sampleExpectations.md)
+[Sample expectations](../Action/docs/sampleExpectations.md)
 
 ### Update configuration
 
@@ -170,4 +170,4 @@ Automated functional tests available in [Functional Tests repo](https://github.c
 API documentation is available [here](https://mosip.github.io/documentation/).
 
 ## License
-This project is licensed under the terms of [Mozilla Public License 2.0](LICENSE).
+This project is licensed under the terms of [Mozilla Public License 2.0](../Action/LICENSE).

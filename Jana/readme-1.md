@@ -22,7 +22,6 @@
 * Create a docker image: docker build. --file Dockerfile --tag mock-abis.
 
 * Push the `docket.underline` image to docker registry. You can also directly use these images for running mock ABIS.
--- 
 
 **Please check Dockerfile for passing env properties**
 
