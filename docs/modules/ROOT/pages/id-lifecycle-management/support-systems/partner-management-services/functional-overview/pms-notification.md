@@ -1,0 +1,269 @@
+# PMS Notification
+
+## What all types of notifications does a Partner Admin get?
+
+**Partner Admin** receives three types of notifications within the PMS Portal and via email:
+
+1\. **Root CA Certificate Expiration**
+
+* Triggered for certificates expiring within the next **30 days**.&#x20;
+
+2\. **Intermediate CA Certificate Expiration**
+
+* Triggered for certificates expiring within the next **30 days**.&#x20;
+
+3\. **Weekly Summary of Partner Certificate Expiration**
+
+* A summary of all **partner certificates expiring in the next 7 days**, sent weekly.
+
+These notifications are accessible via the **Notification Bell icon** in the top-right corner of the PMS portal.
+
+## Navigating through the interface to view or act on the notifications
+
+### View Notifications
+
+#### Notification Panel
+
+* A red alert on the notification bell icon indicates a new notification been triggered.
+* Clicking the bell icon opens a dropdown panel showing the **latest 4 notifications**.
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image1.png" alt=""><figcaption></figcaption></figure>
+
+![](media/media/pms-eug-notification-image1.png)
+
+* Each notification appears as a row with:
+  * **Title**
+  * **Timestamp of notification creation** (Displayed in user's local system time based on browser settings)
+  * **Description**:
+    * \[Root / Intermediate CA Certificate]{.underline}: Includes **Certificate ID**, **partner domain name**, and the **certificate's expiry date**
+    * \[Weekly Summary of Partner expiring items]{.underline}: Includes number of Partner Certificates expiring in next 7 days of time.
+  * **Dismiss** button to remove that specific notification (removes from both Notification panel and Notification list page)
+* Dismissing a notification is **user-specific** and does not impact other Partner Admins.
+
+#### View All Notifications
+
+* Click **"View All Notifications"** at the bottom of the panel to access the full **Notifications Page** where entire list of certificates nearing expiry within the next 30 days is listed.
+* Notifications are organized across **three tabs**:
+  * **Root CA Certificate**
+  * **Intermediate CA Certificate**
+  * **Weekly Summary - Partner**
+
+**Root CA Certificate tab**
+
+The **Root CA Certificate tab** is selected by default upon redirect to Notifications page which displays certificate related details as shown below:
+
+![](media/media/pms-eug-notification-image2.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image2.png" alt=""><figcaption></figcaption></figure>
+
+* To filter the certificate results, click the **Filter** button and enter one or more of the following fields: Certificate ID, Issued By, Issued To, Partner Domain, or Certificate Expiry Date to perform a targeted search.
+
+![](media/media/pms-eug-notification-image3.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image3.png" alt=""><figcaption></figcaption></figure>
+
+* **Dismiss** button to remove that specific notification (removes from both Notification panel and Notification list page)
+
+**'Intermediate CA Certificate' tab**
+
+![](media/media/pms-eug-notification-image4.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image4.png" alt=""><figcaption></figcaption></figure>
+
+* To filter the certificate results, click the **Filter** button and enter one or more of the following fields: Certificate ID, Issued By, Issued To, Partner Domain, or Certificate Expiry Date to perform a targeted search.
+
+![](media/media/pms-eug-notification-image5.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image5.png" alt=""><figcaption></figcaption></figure>
+
+* **Dismiss** button to remove that specific notification (removes from both Notification panel and Notification list page)
+
+**'Weekly Summary - Partner' tab**
+
+Each notification displays the total count of partner certificates set to expire within a given week.
+
+![](media/media/pms-eug-notification-image6.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image6.png" alt=""><figcaption></figcaption></figure>
+
+* To view the specific Partner IDs associated with these expiring certificates, click the **'View Expiring Items'** button. This will display a detailed list of all Partner IDs whose certificates are due to expire within the next 7 days.
+
+![](media/media/pms-eug-notification-image7.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image7.png" alt=""><figcaption></figcaption></figure>
+
+* To filter the weekly summary results, click the **Filter** button and enter one or more of the following fields: 'Notification Creation Date From' and 'Notification Creation Date To' to perform a targeted search.
+
+![](media/media/pms-eug-notification-image8.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image8.png" alt=""><figcaption></figcaption></figure>
+
+* **Dismiss** button to remove that specific notification (removes from both Notification panel and Notification list page)
+
+## Which other places you receive the notifications?
+
+### Certificate Trust Store Badge
+
+* The **Certificate Trust Store** card displays a **red badge** indicating the total count of Root and Intermediate CA certificates **expiring in the next 30 days**.
+
+![](media/media/pms-eug-notification-image9.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image9.png" alt=""><figcaption></figcaption></figure>
+
+### Email Notifications:
+
+Email alerts are sent to the registered email address for the following:
+
+* Root and Intermediate CA certificates expiring within the next 30 days
+* Weekly summary of partner certificates expiring within the next 7 days
+
+These notifications are delivered weekly, and the email follows the template provided below.
+
+#### Root CA Certificate expiry email notification:
+
+![](media/media/pms-eug-notification-image10.png)
+
+<div align="center"><figure><img src="../../../../.gitbook/assets/pms-eug-notification-image10.png" alt="" width="188"><figcaption></figcaption></figure></div>
+
+#### Intermediate CA Certificate expiry email notification:
+
+![](media/media/pms-eug-notification-image12.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image12.png" alt="" width="188"><figcaption></figcaption></figure>
+
+#### Weekly Summary of Partner Certificate expiry email notification:
+
+![](media/media/pms-eug-notification-image14.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image14.png" alt="" width="188"><figcaption></figcaption></figure>
+
+### Important Notes
+
+#### 1) Notification Schedule (PMS Portal & Email):
+
+**a) Root & Intermediate CA Certificate expiration:**
+
+* **First Notification** is generated **30 days prior** to expiry.
+* **Follow-up Notifications** are triggered at:
+  * **15 days**
+  * **Daily from 10 days before expiry until the certificate expires**
+* Notifications are triggered **regardless of whether the certificate is renewed**.
+* All Partner Admins receive the same notification, regardless of who uploaded the certificate.
+* **Newly added Partner Admins** start receiving notifications from the next scheduled batch job.
+
+**b) Weekly Summary of Partner Certificate expiration:**
+
+* A summary of all partner certificates expiring within the next 7 days is generated and sent once every week.
+
+#### 2) Notification Refresh Behavior
+
+* Each time a notification is dismissed, the panel auto-fetches the **next available notification** to maintain a maximum of **4 visible notifications**.
+* If no further notifications are available, a message is displayed:
+
+**"No Notifications Yet - You have no notifications at the moment."**
+
+![](media/media/pms-eug-notification-image16.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image16.png" alt=""><figcaption></figcaption></figure>
+
+#### 3 Language Preference
+
+* The **notification language on PMS portal is based on the language selected at login**, which **overrides** the default language selected at registration.
+* This ensures that the notification content is always shown in the **current session language** for the user.
+* On the other hand, Email notifications are sent in the language selected by the user at the time of registration.
+
+#### 4 Notification Retention:
+
+* Notifications from the past 60 days are retained and available on the PMS portal. Any notification older than 60 days is automatically deleted from the system.
+
+## Partner Notifications
+
+Every partner receives notifications for partner certificates they previously uploaded or corresponding MOSIP signed certificates which are due to expire within the next 30 days; both on the PMS Portal and via email.
+
+These notifications are accessible to all partner types via the **Notification Bell icon** in the top-right corner of the PMS portal.
+
+![](media/media/pms-eug-notification-image17.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image17.png" alt=""><figcaption></figcaption></figure>
+
+### Navigating through the interface to view or act on the notifications
+
+#### Notification Panel
+
+* A red alert on the notification bell icon indicates a new notification been triggered.
+* Clicking the bell icon opens a dropdown panel showing the **latest 4 notifications**.
+
+![](media/media/pms-eug-notification-image18.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image18.png" alt=""><figcaption></figcaption></figure>
+
+* Each notification appears as a row with:
+  * **Title**
+  * **Timestamp of notification creation** (displayed in user's local system time based on browser settings)
+  * **Description**: Includes **partner domain name**, and the **certificate's expiry date**
+  * **Dismiss** button to remove that specific notification (removes from both Notification panel and Notification list page)
+
+### View All Notifications
+
+* Click **"View All Notifications"** at the bottom of the panel to access the full **Notifications Page** where the 'Partner Certificate' tab displays list of partner certificates nearing expiry within the next 30 days.
+* Each notification displays the expiring partner certificate details as shown below:
+
+![](media/media/pms-eug-notification-image19.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image19.png" alt=""><figcaption></figcaption></figure>
+
+* To filter the certificate results, click the **Filter** button and enter one or more of the following fields: Certificate ID, Issued By, Issued To, Partner Domain, or Certificate Expiry Date to perform a targeted search.
+
+![](media/media/pms-eug-notification-image20.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image20.png" alt=""><figcaption></figcaption></figure>
+
+* **Dismiss** button to remove that specific notification (removes from both Notification panel and Notification list page)
+
+### Which other places you receive the notifications?
+
+#### Certificate Trust Store Badge
+
+* The **Certificate Trust Store** card displays a **red badge** indicating the total count of Partner certificates **expiring in the next 30 days**.
+
+### Email Notifications:
+
+Email alerts are sent to the partner's registered email address for Partner certificates expiring within the next 30 days.
+
+![](media/media/pms-eug-notification-image21.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image21.png" alt="" width="188"><figcaption></figcaption></figure>
+
+
+
+### Important Notes
+
+#### 1. Notification Schedule (PMS Portal & Email)
+
+* **First Notification** is generated **30 days prior** to expiry.
+* **Follow-up Notifications** are triggered at:
+  * **15 days**
+  * **Daily from 10 days before expiry until the certificate expires**
+* Notifications are triggered **regardless of whether the certificate is renewed**.
+
+#### 2. Notification Refresh Behavior
+
+* Each time a notification is dismissed, the notification panel auto-fetches the **next available notification** to maintain a maximum of **4 visible notifications**.
+* If no further notifications are available, a message is displayed:
+
+**"No Notifications Yet -- You have no notifications at the moment."**
+
+![](media/media/pms-eug-notification-image23.png)
+
+<figure><img src="../../../../.gitbook/assets/pms-eug-notification-image23.png" alt=""><figcaption></figcaption></figure>
+
+#### 3. Language Preference
+
+* The **notification language on PMS portal is based on the language selected at login**, which **overrides** the default language selected at registration.
+* This ensures that the notification content is always shown in the **current session language** for the user.
+* On the other hand, Email notifications are sent in the language selected by the user at the time of registration.
+
+#### 4. Notification Retention
+
+* Notifications from the past 60 days are retained and available on the PMS portal. Any notification older than 60 days is automatically deleted from the system.
+* If a **partner certificate is renewed before its expiry date**, alls subsequent notifications related to that certificate are automatically discontinued.

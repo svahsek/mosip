@@ -1,0 +1,1105 @@
+== API changes with PMS Revamp
+
+This document captures all the changes that have been made in the API
+endpoints during the PMS Revamp Releases. These changes include addition
+of new endpoints, deprecation of a few endpoints and also some other
+changes.
+
+Partner Management Service:
+
+API Path
+
+Method
+
+Description
+
+Changes done in release 1.2.2.0
+
+Changes done in release 1.3.0-beta.1
+
+/oauth/client
+
+GET
+
+This endpoint retrieves a list of all OAuth clients created by the Auth
+Partners. It supports pagination, sorting, and and filtering based on
+optional query parameters. If the token used to access this endpoint,
+does not have the PARTNER++_++ADMIN role, then it will fetch all the
+OAuth clients created by all the partners associated with the logged in
+user only. If the token used to access this endpoint, has
+PARTNER++_++ADMIN role, then it will fetch all the OAuth clients created
+by all the partners. It is configured for PARTNER++_++ADMIN and
+AUTH++_++PARTNER roles.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/oauth/client
+
+POST
+
+This endpoint is used for creating OIDC Client.
+
+Added validation to check the partner id in the request body belongs to
+the user who’s token is being used to access this endpoint. This will
+ensure that PMS user can create OIDC client only for the partner id
+which belongs to the user. This validation is skipped if the user’s role
+is PARTNER++_++ADMIN.
+
+Added validation to check if the Partner ID used in the request body is
+active. This will ensure that OIDC client cannot be created for an
+inactive partner. (MOSIP-34276)
+
+If multiple policy requests were created by the partner for a policy,
+then while creating the OIDC client, this endpoint was checking the
+status of only the first policy request. So even if there was an
+approved policy request, it was still throwing an error. Fixed this bug
+(MOSIP-34599)
+
+Improved JWK validation for the public key by adding validation that n
+value (modulus value) of the JWK must be unique (MOSIP-36219)
+
+Updated client name to be a JSON string to support client name language
+map (ES-836)
+
+No changes made in release 1.3.0-beta.1
+
+/oauth/client/++{++client++_++id}
+
+GET
+
+This endpoint retrieves the OIDC client details by client id
+
+Added validation to check the partner id in the request belongs to the
+user who’s token is being used to access this endpoint. This will ensure
+that PMS user can access OIDC client only for the partner id which
+belongs to the user. This validation is skipped if the user’s role is
+PARTNER++_++ADMIN.
+
+No changes made in release 1.3.0-beta.1
+
+/oauth/client/++{++client++_++id}
+
+PUT
+
+This endpoint is used for updating OIDC Client based on client id
+
+Added validation to check the partner id in the request body belongs to
+the user who’s token is being used to access this endpoint. This will
+ensure that PMS user can update OIDC client only for the partner id
+which belongs to the user. This validation is skipped if the user’s role
+is PARTNER++_++ADMIN.
+
+Added validation to check if the Partner ID used in the request body is
+active. This will ensure that OIDC client cannot be updated for an
+inactive partner. This validation is skipped if the user’s role is
+PARTNER++_++ADMIN and status in the request is changed to INACTIVE.
+(MOSIP-34276)
+
+If the status in the request is changed to INACTIVE, only the status is
+updated in the database other fields remain unchanged. This will ensure
+that PUT endpoint can be used to deactivate the OIDC client.
+
+Added a bypass for a user with PARTNER++_++ADMIN role. If the user with
+PARTNER++_++ADMIN role is used to access this endpoint, then it will
+deactivate the OIDC client for any partner ID, even if the partner ID is
+deactivated.
+
+Added a validation to check if the OIDC client is already
+deactivated.(MOSIP-34108)
+
+Updated client name to be a JSON string to support client name language
+map (ES-836)
+
+No changes made in release 1.3.0-beta.1
+
+/devicedetail
+
+GET
+
+This endpoint retrieves a list of all the Devices across all the Device
+Providers in PMS. It supports pagination, sorting, and filtering. It is
+configured for the role PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/devicedetail
+
+PUT
+
+Service to update Device Detail
+
+This endpoint has been deprecated since the release-1.2.2.0.
+
+No changes made in release 1.3.0-beta.1
+
+/devicedetail
+
+POST
+
+Service to save Device Detail
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new POST /securebiometricinterface/++{++sbiId}/devices
+endpoint
+
+This ensures that a device will always be created for a SBI and not
+without one.
+
+No changes made in release 1.3.0-beta.1
+
+/devicedetail
+
+PATCH
+
+Service to approve/reject Device Detail
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new POST devicedetail/++{++id}/approval endpoint
+
+No changes made in release 1.3.0-beta.1
+
+/devicedetail/++{++deviceId}
+
+PATCH
+
+This endpoint deactivates a Device based on the Device Id. It is
+configured for the roles DEVICE++_++PROVIDER or PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/devicedetail/++{++id}/approval
+
+POST
+
+This endpoint is for the Partner Admin user to approve or reject a
+Device and activate the mapping between the Device and the SBI. It is
+configured for the role PARTNER++_++ADMIN
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/devicedetail/deviceSubType/filtervalues
+
+POST
+
+Service to filter Device Sub Types
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/devicedetail/deviceType/filtervalues
+
+POST
+
+Service to filter Device Types
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/devicedetail/deviceType/search
+
+POST
+
+Service to search Device Types
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/devicedetail/filtervalues
+
+POST
+
+Service to filter Device Detail
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /devicedetail endpoint
+
+No changes made in release 1.3.0-beta.1
+
+/devicedetail/search
+
+POST
+
+Service to search Device Detail
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /devicedetail endpoint
+
+No changes made in release 1.3.0-beta.1
+
+/ftpchipdetail
+
+GET
+
+This endpoint retrieves a list of all FTM Chip details created by all
+the FTM Providers associated with the logged in user. It is configured
+for the roles FTM++_++PROVIDER or PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/ftpchipdetail
+
+PUT
+
+Service to update ftp chip detail
+
+This endpoint has been deprecated since the release-1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/ftpchipdetail
+
+POST
+
+Service to save ftp chip detail
+
+Improved the validation check by trimming extra spaces in make and model
+to prevent duplicate entries. (MOSIP-35788)
+
+No changes made in release 1.3.0-beta.1
+
+/ftpchipdetail
+
+PATCH
+
+Service to approve/reject ftp chip detail
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/ftpchipdetail/++{++ftmId}
+
+PATCH
+
+This endpoint deactivates the ftp chip detail based on the ftp chip
+detail Id. It is configured for the roles FTM++_++PROVIDER or
+PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/ftpchipdetail/++{++ftmId}/certificate-data
+
+GET
+
+This endpoint fetches both the CA signed certificate uploaded by the FTM
+Chip Provider and the MOSIP signed certificate generated by PMS. It is
+configured for the roles FTM++_++PROVIDER or PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/ftpchipdetail/getPartnerCertificate/++{++ftpChipDetailId}
+
+GET
+
+Service to get certificate of ftp chip
+
+Improved Key Manager error handling, to capture the correct error code
+from Key Manager and send it in the endpoint’s response.
+
+No changes made in release 1.3.0-beta.1
+
+/ftpchipdetail/search
+
+POST
+
+Service to search ftp chip details
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /ftpchipdetail/v2 endpoint.
+
+No changes made in release 1.3.0-beta.1
+
+/ftpchipdetail/uploadcertificate
+
+POST
+
+Service to upload certificate of ftp chip
+
+Added validation to allow certificate upload only if the FTM chip
+details certificate status is APPROVED or
+PENDING++_++CERT++_++UPLOAD.(MOSIP-36283). So for Rejected or
+Deactivated FTM, a certificate cannot be uploaded.
+
+Improved Key Manager error handling, to capture the correct error code
+from Key Manager and send it in the endpoint’s response.
+
+Set isActive to false after certificate re-upload. This will ensure that
+after cert is reuploaded, partner admin will have to approve the FTM
+again. (MOSIP-36285)
+
+No changes made in release 1.3.0-beta.1
+
+/ftpchipdetail/v2
+
+GET
+
+This endpoint retrieves a list of all FTM Chip details created by all
+the FTM Providers. Also supports pagination, sorting, and filtering. It
+is configured for the role PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/admin-partners
+
+GET
+
+This endpoint retrieves a list of all Partners. Also supports
+pagination, sorting, and filtering. It is configured for the role
+PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+Disabled sorting on the email++_++id column due to encryption-related
+limitations.
+
+Modified filtering behavior for the email++_++id column: now supports
+only exact match filtering; partial or "`contains`" search is no longer
+supported.
+
+/admin-partners/++{++partnerId}
+
+GET
+
+This endpoint retrieves all the details of the Partner based on Partner
+Id. It is configured for the role PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+/partner-api-keys
+
+GET
+
+This endpoint retrieves a list of all the API keys created by the Auth
+Partners. Also supports pagination, sorting, and and filtering based on
+optional query parameters. If the token used to access this endpoint,
+does not have the PARTNER++_++ADMIN role, then it will fetch all the API
+keys created by all the partners associated with the logged in user
+only. If the token used to access this endpoint, has PARTNER++_++ADMIN
+role, then it will fetch all the API keys created by all the partners.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/partner-policy-requests
+
+GET
+
+This endpoint fetches list of all the policy requests made by the
+partners. Also supports pagination, sorting, and filtering based on
+optional query parameters. If the token used to access this endpoint,
+does not have the PARTNER++_++ADMIN role, then it will fetch all the
+policy requests made by all the partners associated with the logged in
+user only.If the token used to access this endpoint, has
+PARTNER++_++ADMIN role, then it will fetch all the policy requests made
+by all the partners.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/partners
+
+GET
+
+Service to get partner details
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /partners/v3 endpoint.
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+/partners/++{++partnerId}
+
+PATCH
+
+Service to activate/de-activate partner
+
+Added a check to verify if the partner is already deactivated. If yes,
+partner cannot be deactivated again. (MOSIP-37017)
+
+No changes made in release 1.3.0-beta.1
+
+/partners/++{++partnerId}/apikey/++{++apikey}
+
+GET
+
+Service to get policy for given API key
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/partners/++{++partnerId}/apikey/++{++apikey}/policies
+
+PUT
+
+Service to update policies against to API key
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/partners/++{++partnerId}/policy/++{++policyId}/apikey/status
+
+PATCH
+
+Service to activate/de-activate partner API key
+
+If the API key is already deactivated, it cannot be deactivated
+again.(MOSIP-34430)
+
+Added a validation to check if the Partner ID used in the request body
+is active. This will ensure that API cannot be deactivated if partner
+has been deactivated. This validation is skipped if the user’s role is
+PARTNER++_++ADMIN. (MOSIP-34430)
+
+No changes made in release 1.3.0-beta.1
+
+/partners/apikey
+
+GET
+
+Service to get API key requests
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /partner-policy-requests endpoint.
+
+No changes made in release 1.3.0-beta.1
+
+/partners/apikey/++{++apikey}
+
+GET
+
+Service to get API key request
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/partners/policy/++{++mappingkey}
+
+PUT
+
+Service to approve/reject partner policy mapping
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/partners/v2
+
+GET
+
+Service to get partner details
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /partners/v3 endpoint.
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+/trust-chain-certificates
+
+GET
+
+This endpoint retrieves a list of all the Trust Certificates uploaded by
+the Partner Admin. Also supports pagination, sorting, and filtering. It
+is configured for the role PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/trust-chain-certificates/++{++certificateId}/certificateFile
+
+GET
+
+This endpoint will download p7b file for a CA / Intermediate CA
+certificate along with the trust chain based on Certificate Id. It is
+configured for the role PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/partners
+
+POST
+
+partner self registration
+
+No changes made in release 1.2.2.0
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+/partners/++{++partnerId}
+
+GET
+
+Service to get details of partner
+
+Corrected the version in the response body
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+/partners/++{++partnerId}
+
+PUT
+
+Service to update details of partner
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+/partners/++{++partnerId}/apikey/request
+
+GET
+
+Service to get API key requests of partner
+
+Corrected the version in the response body
+
+No changes made in release 1.3.0-beta.1
+
+/partners/++{++partnerId}/certificate
+
+GET
+
+Service to get partner certificate
+
+Added a check to verify if the partner id in the request exists in the
+database.(MOSIP-37017)
+
+Added validation to check if the certificate has been uploaded
+previously.
+
+No changes made in release 1.3.0-beta.1
+
+/partners/++{++partnerId}/certificate-data
+
+GET
+
+This endpoint retrieves both the CA signed certificate uploaded by the
+partner and the MOSIP-signed certificate generated by PMS. It is
+configured for role any of the partner type or PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/partners/++{++partnerId}/contact/add
+
+POST
+
+Service to add additional contact deatils of partner
+
+No changes made in release 1.2.2.0
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+/partners/++{++partnerId}/generate/apikey
+
+PATCH
+
+To generate API Key for approved policies
+
+Added a check to remove extra spaces in the API key label before saving
+to the database, preventing the creation of duplicate API key labels
+with extra spaces.(MOSIP-35788)
+
+No changes made in release 1.3.0-beta.1
+
+/partners/++{++partnerId}/policy/map
+
+POST
+
+To request for policy mapping
+
+Updated error messages to indicate if the policy is already mapped and
+its status is Approved or In Progress.(MOSIP-33803)
+
+No changes made in release 1.3.0-beta.1
+
+/partners/++{++partnerId}/policygroup/++{++policygroupName}
+
+PUT
+
+Service to update the policy group for partner
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/partners/apikey/request/filtervalues
+
+POST
+
+Service to filter API key requests
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /partner-policy-requests endpoint.
+
+No changes made in release 1.3.0-beta.1
+
+/partners/apikey/request/search
+
+POST
+
+Service to search API key requests
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /partner-policy-requests endpoint.
+
+No changes made in release 1.3.0-beta.1
+
+/partners/apikey/search
+
+POST
+
+Service to search API key
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /partner-api-keys endpoint.
+
+No changes made in release 1.3.0-beta.1
+
+/partners/certificate/ca/upload
+
+POST
+
+Service to upload ca certificate
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/partners/certificate/upload
+
+POST
+
+Service to upload partner certificate
+
+Added a validation to check if the Partner ID used in the request body
+is active. This will ensure that certificate cannot be uploaded if
+partner has been deactivated. (MOSIP-34498)
+
+If domain is FTM, do not call the uploadOtherDomainCertificate endpoint
+of KeyManager.(MOSIP-35797)
+
+No changes made in release 1.3.0-beta.1
+
+/partners/email/verify
+
+PUT
+
+Service to verify partner email
+
+No changes made in release 1.2.2.0
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+/partners/filtervalues
+
+POST
+
+Service to filter partner details
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /partners/v3 endpoint.
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+Support for email++_++id, contact++_++no, and address fields has been
+removed due to encryption constraints.
+
+/partners/partner-certificates-details
+
+GET
+
+This endpoint retrieves a list of all Partner Certicates uploaded by the
+logged in user
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/partners/partnerType/search
+
+POST
+
+Service to search partner types
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+partners/search
+
+POST
+
+Service to search partner details
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /partners/v3 endpoint.
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+Support for email++_++id, contact++_++no, and address columns has been
+removed due to encryption constraints.
+
+partners/v2
+
+POST
+
+Registers partner details
+
+No changes made in release 1.2.2.0
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+partners/v2/++{++partnerId}
+
+PUT
+
+Service to update details of partner
+
+No changes made in release 1.2.2.0
+
+Handled encryption and decryption for PII columns(MOSIP-38061)
+
+partners/v3
+
+GET
+
+This endpoint retrieves a list of Partners associated with the logged in
+user, based on the query parameters. It is configured for role any of
+the partner type or PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/roles
+
+GET
+
+Service to get required roles
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface
+
+GET
+
+This endpoint retrieves a list of all SBIs created by the Device
+Providers. Also supports pagination, sorting, and and filtering based on
+optional query parameters. If the token used to access this endpoint,
+does not have the PARTNER++_++ADMIN role, then it will fetch all SBIs
+created by all the partners associated with the logged in user only. If
+the token used to access this endpoint, has PARTNER++_++ADMIN role, then
+it will fetch all the SBIs created by all the partners.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface
+
+PUT
+
+Service to update SecureBiometricInterface
+
+This endpoint has been deprecated since the release-1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface
+
+POST
+
+Service to save SecureBiometricInterface details
+
+Added a check to remove extra spaces in the SBI version before saving to
+the database, preventing the creation of duplicate SBI versions with
+extra spaces.(MOSIP-35788)
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface
+
+PATCH
+
+Service to approve/reject SecureBiometricInterface
+
+Added separate error codes for cases when SBI is already approved or
+rejected.(MOSIP-38973)
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface/++{++sbiId}
+
+PATCH
+
+This endpoint deactivates an SBI along with associated Devices. It is
+configured for the roles DEVICE++_++PROVIDER or PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface/++{++sbiId}/devices
+
+GET
+
+This endpoint fetches the list of Devices associated with a given SBI
+Id. It is configured for the roles DEVICE++_++PROVIDER or
+PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface/++{++sbiId}/devices
+
+POST
+
+This endpoint adds a new Device and creates an inactive mapping between
+the device and the given SBI. It is configured for the roles
+DEVICE++_++PROVIDER or PARTNER++_++ADMIN.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface/devicedetails/map
+
+PUT
+
+Service to map device details with sbi
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new POST /securebiometricinterface/++{++sbiId}/devices
+endpoint.
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface/devicedetails/map/remove
+
+PUT
+
+Service to remove mapped device details with sbi
+
+This endpoint has been deprecated since the release-1.2.2.0.
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface/devicedetails/map/search
+
+POST
+
+Service to search mapped device details and SecureBiometricInterface
+details
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /securebiometricinterface/++{++sbiId}/devices
+endpoint.
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface/filtervalues
+
+POST
+
+Service to filter SBI’s
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /securebiometricinterface endpoint.
+
+No changes made in release 1.3.0-beta.1
+
+/securebiometricinterface/search
+
+POST
+
+Service to search SecureBiometricInterface details
+
+This endpoint has been deprecated since the release-1.2.2.0. It has been
+replaced by the new GET /securebiometricinterface endpoint.
+
+No changes made in release 1.3.0-beta.1
+
+/system-config
+
+GET
+
+This endpoint fetches the configurations for PMS and sends them to the
+UI. No roles are required for access.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/users
+
+POST
+
+Service to register user
+
+No changes made in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/users/user-consent
+
+GET
+
+This endpoint fetches the user’s consent related to the data captured by
+PMS. The consent is requested only once after the user’s first login,
+and won’t be asked again if already given. It is configured for all
+Partner Type roles.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/users/user-consent
+
+POST
+
+This endpoint saves the user’s consent related to data captured by the
+PMS portal, which is requested only once after the user’s first login.
+Once provided, the consent will not be asked again. It is configured for
+all Partner Type roles.
+
+Newly added in release 1.2.2.0
+
+No changes made in release 1.3.0-beta.1
+
+/users/++{++userId}/notifications-seen-timestamp
+
+GET
+
+This endpoint which will get the status and timestamp of when the
+notifications were last viewed by the user in the PMS portal.
+
+-
+
+Newly added in release 1.3.0-beta.1
+
+/users/++{++userId}/notifications-seen-timestamp
+
+PUT
+
+This endpoint which will update the status and timestamp of when the
+notifications were last viewed by the user in the PMS portal.
+
+-
+
+Newly added in release 1.3.0-beta.1
+
+/notifications
+
+GET
+
+This endpoint will get all the notifications from the pms.notifications
+table. Also supports pagination, sorting, and and filtering based on
+optional query parameters.
+
+-
+
+Newly added in release 1.3.0-beta.1
+
+/notifications/++{++notificationId}
+
+PATCH
+
+This endpoint will be used to handle the dismiss action by the user.
+
+-
+
+Newly added in release 1.3.0-beta.1
+
+Policy Management Service:
+
+[width="100%",cols="11%,1%,72%,10%,6%",options="header",]
+|===
+|API Path |Method |Description |Changes done in release-1.2.2.0 |Changes
+done in release 1.3.0-beta.1
+|/policies |GET |Service to get policies |No changes made in release
+1.2.2.0 |No changes made in release 1.3.0-beta.1
+
+|/policies |POST |Service to create a new authentication, data sharing,
+or credential policy. |Handled missing '`Empty Array and Empty String`'
+Schema Validation |No changes made in release 1.3.0-beta.1
+
+|/policies/++{++policyId} |GET |Service to retrieve the details of a
+specific policy by its ID. |No changes made in release 1.2.2.0 |No
+changes made in release 1.3.0-beta.1
+
+|/policies/++{++policyId} |PUT |Service to update policy details |No
+changes made in release 1.2.2.0 |No changes made in release 1.3.0-beta.1
+
+|/policies/++{++policyId} |PATCH |This endpoint deactivates a policy
+based on the Policy Id. It checks if any policy requests are associated
+with the policy: it can be deactivated if there are no requests or if
+there are rejected requests. It cannot be deactivated if there are
+approved or pending requests, returning error codes PMS++_++POL++_++063
+or PMS++_++POL++_++064, respectively. This endpoint is configured for
+the *POLICYMANAGER* or *PARTNER++_++ADMIN* roles. |Newly added in
+release 1.2.2.0 |No changes made in release 1.3.0-beta.1
+
+|/policies/++{++policyId}/group/++{++policygroupId}/publish |POST
+|Service to publish policy |No changes made in release 1.2.2.0 |No
+changes made in release 1.3.0-beta.1
+
+|/policies/active/group/++{++groupName} |GET |Service to get active
+policy details for policy group name |No changes made in release 1.2.2.0
+|No changes made in release 1.3.0-beta.1
+
+|/policies/group/++{++policygroupId} |GET |Service to get policy group
+|No changes made in release 1.2.2.0 |No changes made in release
+1.3.0-beta.1
+
+|/policies/group/++{++policyGroupId} |PATCH |Service for Partner Admin
+users to deactivate a Policy Group based on the Policy Group Id. It is
+configured for the *POLICYMANAGER* or *PARTNER++_++ADMIN* roles. |Newly
+added in release 1.2.2.0 |No changes made in release 1.3.0-beta.1
+
+|/policies/group/new |POST |Service to create a new policy group |No
+changes made in release 1.2.2.0 |No changes made in release 1.3.0-beta.1
+
+|/policies/group/search |POST |Service to search policy group |No
+changes made in release 1.2.2.0 |No changes made in release 1.3.0-beta.1
+
+|/policies/policy-groups |GET |Service to retrieve details about all
+active Policy Groups |Newly added in release 1.2.2.0 |No changes made in
+release 1.3.0-beta.1
+
+|/policies/v2 |GET |Service to retrieve the list of all Policies. It is
+configured for the *POLICYMANAGER* or *PARTNER++_++ADMIN* roles. |Newly
+added in release 1.2.2.0 |No changes made in release 1.3.0-beta.1
+|===
