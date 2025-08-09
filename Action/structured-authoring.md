@@ -1,9 +1,0 @@
-- https://www.author-it.com/blog/structured-authoring-in-technical-documentation/
-- https://document360.com/blog/structured-authoring/
-- https://www.doctave.com/blog/path-to-structured-markdown
-- https://paligo.net/structured-authoring/
-- https://componize.com/what-is-structured-content-authoring/
-- https://www.linkedin.com/advice/1/how-can-you-use-structured-authoring-create-bccxe
-- https://andrewowen.net/blog/migrating-from-markdown-to-structured-authoring/
-- https://www.doctave.com/blog/markdown-vs-dita
-- https://www.linkedin.com/posts/niklasbegley_the-path-to-structured-content-with-markdown-activity-7204472943060434945-bCOS
