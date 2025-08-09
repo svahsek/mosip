@@ -1,0 +1,5 @@
+name: mosip
+title: MOSIP
+version: ~ main
+nav:
+- modules/ROOT/nav.adoc
