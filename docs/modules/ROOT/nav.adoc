@@ -1,57 +1,57 @@
 * xref:index.adoc[Home]
-* xref:pages/api-changes-with-pms-revamp.adoc[API Changes with PMS Revamp]
-* xref:pages/pms-configuration-guide.adoc[PMS Configuration Guide]
-* xref:pages/README.adoc[README]
+* xref:api-changes-with-pms-revamp.adoc[API Changes with PMS Revamp]
+* xref:pms-configuration-guide.adoc[PMS Configuration Guide]
+* xref:README.adoc[README]
 
 * ID Lifecycle Management
-** xref:pages/id-lifecycle-management/README.adoc[ID Lifecycle Management]
+** xref:id-lifecycle-management/README.adoc[ID Lifecycle Management]
 ** Identity Issuance
-*** xref:pages/id-lifecycle-management/identity-issuance/README.adoc[Identity Issuance Overview]
-*** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/README.adoc[Android Registration Client]
-*** xref:pages/id-lifecycle-management/identity-issuance/id-repository/README.adoc[ID Repository]
-*** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/README.adoc[Pre-Registration]
-*** xref:pages/id-lifecycle-management/identity-issuance/registration-client/README.adoc[Registration Client]
-*** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/README.adoc[Registration Processor]
+*** xref:id-lifecycle-management/identity-issuance/README.adoc[Identity Issuance Overview]
+*** xref:id-lifecycle-management/identity-issuance/android-registration-client/README.adoc[Android Registration Client]
+*** xref:id-lifecycle-management/identity-issuance/id-repository/README.adoc[ID Repository]
+*** xref:id-lifecycle-management/identity-issuance/pre-registration/README.adoc[Pre-Registration]
+*** xref:id-lifecycle-management/identity-issuance/registration-client/README.adoc[Registration Client]
+*** xref:id-lifecycle-management/identity-issuance/registration-processor/README.adoc[Registration Processor]
 ** Identity Management
-*** xref:pages/id-lifecycle-management/identity-management/README.adoc[Identity Management Overview]
-*** xref:pages/id-lifecycle-management/identity-management/id-schema.adoc[ID Schema]
-*** xref:pages/id-lifecycle-management/identity-management/identifiers.adoc[Identifiers]
-*** xref:pages/id-lifecycle-management/identity-management/resident-services/README.adoc[Resident Services]
+*** xref:id-lifecycle-management/identity-management/README.adoc[Identity Management Overview]
+*** xref:id-lifecycle-management/identity-management/id-schema.adoc[ID Schema]
+*** xref:id-lifecycle-management/identity-management/identifiers.adoc[Identifiers]
+*** xref:id-lifecycle-management/identity-management/resident-services/README.adoc[Resident Services]
 ** Identity Verification
-*** xref:pages/id-lifecycle-management/identity-verification/README.adoc[Identity Verification Overview]
-*** xref:pages/id-lifecycle-management/identity-verification/id-authentication.adoc[ID Authentication]
-*** xref:pages/id-lifecycle-management/identity-verification/id-authentication-services/README.adoc[ID Authentication Services]
+*** xref:id-lifecycle-management/identity-verification/README.adoc[Identity Verification Overview]
+*** xref:id-lifecycle-management/identity-verification/id-authentication.adoc[ID Authentication]
+*** xref:id-lifecycle-management/identity-verification/id-authentication-services/README.adoc[ID Authentication Services]
 
 * Support Systems
-** xref:pages/id-lifecycle-management/support-systems/README.adoc[Support Systems Overview]
+** xref:id-lifecycle-management/support-systems/README.adoc[Support Systems Overview]
 ** Administration
-*** xref:pages/id-lifecycle-management/support-systems/administration/README.adoc[Administration Overview]
-*** xref:pages/id-lifecycle-management/support-systems/administration/masterdata-guide.adoc[Master Data Guide]
+*** xref:id-lifecycle-management/support-systems/administration/README.adoc[Administration Overview]
+*** xref:id-lifecycle-management/support-systems/administration/masterdata-guide.adoc[Master Data Guide]
 ** Partner Management Services
-*** xref:pages/id-lifecycle-management/support-systems/partner-management-services/README.adoc[Partner Management Services]
+*** xref:id-lifecycle-management/support-systems/partner-management-services/README.adoc[Partner Management Services]
 ** Reporting
-*** xref:pages/id-lifecycle-management/support-systems/reporting/README.adoc[Reporting]
+*** xref:id-lifecycle-management/support-systems/reporting/README.adoc[Reporting]
 
 * Supporting Components
-** xref:pages/id-lifecycle-management/supporting-components/README.adoc[Supporting Components Overview]
-** xref:pages/id-lifecycle-management/supporting-components/datashare.adoc[Datashare]
-** xref:pages/id-lifecycle-management/supporting-components/keycloak.adoc[Keycloak]
+** xref:id-lifecycle-management/supporting-components/README.adoc[Supporting Components Overview]
+** xref:id-lifecycle-management/supporting-components/datashare.adoc[Datashare]
+** xref:id-lifecycle-management/supporting-components/keycloak.adoc[Keycloak]
 ** Biometrics
-*** xref:pages/id-lifecycle-management/supporting-components/biometrics/README.adoc[Biometrics]
+*** xref:id-lifecycle-management/supporting-components/biometrics/README.adoc[Biometrics]
 ** Commons
-*** xref:pages/id-lifecycle-management/supporting-components/commons/README.adoc[Commons]
+*** xref:id-lifecycle-management/supporting-components/commons/README.adoc[Commons]
 ** Packet Manager
-*** xref:pages/id-lifecycle-management/supporting-components/packet-manager/README.adoc[Packet Manager]
+*** xref:id-lifecycle-management/supporting-components/packet-manager/README.adoc[Packet Manager]
 ** Persistence
-*** xref:pages/id-lifecycle-management/supporting-components/persistence/README.adoc[Persistence]
+*** xref:id-lifecycle-management/supporting-components/persistence/README.adoc[Persistence]
 ** Quality Manager
-*** xref:pages/id-lifecycle-management/supporting-components/quality-manager/README.adoc[Quality Manager]
+*** xref:id-lifecycle-management/supporting-components/quality-manager/README.adoc[Quality Manager]
 
 * Supporting Services
-** xref:pages/id-lifecycle-management/supporting-services/README.adoc[Supporting Services Overview]
-** xref:pages/id-lifecycle-management/supporting-services/mock-services.adoc[Mock Services]
-** xref:pages/id-lifecycle-management/supporting-services/module-configuration.adoc[Module Configuration]
+** xref:id-lifecycle-management/supporting-services/README.adoc[Supporting Services Overview]
+** xref:id-lifecycle-management/supporting-services/mock-services.adoc[Mock Services]
+** xref:id-lifecycle-management/supporting-services/module-configuration.adoc[Module Configuration]
 ** Keymanager
-*** xref:pages/id-lifecycle-management/supporting-services/keymanager/README.adoc[Key Manager]
+*** xref:id-lifecycle-management/supporting-services/keymanager/README.adoc[Key Manager]
 ** Websub
-*** xref:pages/id-lifecycle-management/supporting-services/websub/README.adoc[WebSub]
+*** xref:id-lifecycle-management/supporting-services/websub/README.adoc[WebSub]
