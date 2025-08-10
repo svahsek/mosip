@@ -1,0 +1,36 @@
+== Biometrics
+
+=== Overview
+
+MOSIP platform integrates with the following biometric key components:
+
+[arabic]
+. link:biometric-devices.md[Biometric devices] - Captures biometric data
+(fingerprint, iris, and face) for registration and authentication.
+. link:abis.md[ABIS] - Facilitates biometric de-duplication and
+identification to ensure uniqueness and prevent identity fraud.
+. link:biometric-sdk.md[Biometric SDK] - Provides integration tools for
+biometric data capture, processing, and quality checks.
+
+All biometric components must comply with MOSIP’s standard interfaces.
+Compatibility can be verified using the provided test kits.
+
+Vendors supplying biometric systems are recognized as MOSIP
+link:../../support-systems/partner-management-services/partners.md[Partners].
+
+=== Modalities
+
+MOSIP supports the following biometric modalities:
+
+[arabic]
+. link:biometric-specification.md#fingerprint[Fingerprint] - Defines
+fingerprint capture and authentication device specifications per ISO
+19794-4:2011, covering resolution, image quality, compression, and
+operational standards.
+. link:biometric-specification.md#iris[Iris] - Outlines iris capture and
+authentication device specifications per ISO 19794-6:2011, detailing
+resolution, image quality, compression, and operational standards.
+. link:biometric-specification.md#face-capture[Face] - Defines face
+capture and authentication device specifications per ISO 19794-5:2011,
+covering camera quality, image standards, compression, and operational
+requirements.

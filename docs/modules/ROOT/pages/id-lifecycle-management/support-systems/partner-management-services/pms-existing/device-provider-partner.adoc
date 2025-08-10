@@ -1,0 +1,134 @@
+== Device Provider
+
+=== Overview
+
+This guide enables the Device provider partner to use the partner portal
+effectively. Below is the workflow:
+
+* The partner self-registers through the portal.
+* Partner admin uploads the CA certificate.
+* Partner admin or Partner uploads the partner certificate.
+* Partner admin or Partner creates device details.
+* Partner admin approves or rejects device details.
+* Partner admin or Partner creates SBI details.
+* Partner admin approves or rejects SBI details.
+* Partner admin or Partner maps devices and SBI.
+
+==== Self-registration
+
+* The Device Provider partner can register themselves on the MOSIP PMS
+portal by clicking *Register* on the landing page.
+* They need to fill up a form with the details below:
+** First and Last name
+** Organization Name
+** Partner type (Device Provider)
+** Address, e-mail, phone number
+** Username and password
+
+image:../../../../.gitbook/assets/device-partner-self-register1.PNG[../../../../.gitbook/assets/device-partner-self-register1]
+image:../../../../.gitbook/assets/device-partner-self-register2.PNG[../../../../.gitbook/assets/device-partner-self-register2]
+
+To view the details entered, click *Home* to see the dashboard.
+
+image:../../../../.gitbook/assets/device-partner-home-page.PNG[../../../../.gitbook/assets/device-partner-home-page]
+
+==== Upload of Certificates
+
+===== CA Certificate upload
+
+The Partner admin needs to upload the CA certificate to enable the
+partner for using the portal. To do so, the Partner admin:
+
+[arabic]
+. Clicks *Upload CA Certificate* option on the left navigation pane of
+the partner portal.
+. Selects the Partner Domain.
+. Chooses the certificate to upload (only files with extensions such as
+.cer or .pem).
+. Clicks *Upload*.
+
+The uploaded certificates can be viewed by clicking on
+`View Certificates-++>++ View`.
+
+===== Partner Certificate upload
+
+Similarly, the Partner certificates can be added by the Partner admin/
+partner.
+
+The certificate can be uploaded by clicking *Home-++>++ Upload
+Certificate -++>++ Upload*.
+
+image:../../../../.gitbook/assets/device-partner-upload-cert.PNG[../../../../.gitbook/assets/device-partner-upload-cert]
+
+image:../../../../.gitbook/assets/device-partner-cert-upload-success.PNG[../../../../.gitbook/assets/device-partner-cert-upload-success]
+
+The certificate can be viewed by clicking *Home-++>++ View Certificate
+-++>++View*.
+
+image:../../../../.gitbook/assets/device-partner-view-cert-page.PNG[../../../../.gitbook/assets/device-partner-view-cert-page]
+
+=== Device make and model
+
+==== Creating Device details
+
+The partner can add devices to the portal. To do so,
+
+[arabic]
+. Partner clicks `Device details-++>++ Create Device`.
+. Enters the necessary details to create/add devices like:
+* Partner Name
+* Device Type and Sub Type
+* Make and Model
+. Click *Save*.
+
+image:../../../../.gitbook/assets/device-make-model-defaultpage.PNG[../../../../.gitbook/assets/device-make-model-defaultpage]
+
+image:../../../../.gitbook/assets/device-make-model-create1.PNG[../../../../.gitbook/assets/device-make-model-create1]
+
+image:../../../../.gitbook/assets/device-make-model-create-success.PNG[../../../../.gitbook/assets/device-make-model-create-success]
+
+==== Approval/ Rejection of Device details
+
+The Partner Admin can choose to approve/reject the device details
+entered by the partner.
+
+image:../../../../.gitbook/assets/partner-admin-device-details-view-page.PNG[../../../../.gitbook/assets/partner-admin-device-details-view-page]
+
+image:../../../../.gitbook/assets/partner-admin-device-details-actions.PNG[../../../../.gitbook/assets/partner-admin-device-details-actions]
+
+image:../../../../.gitbook/assets/partner-admin-device-details-approve-action.PNG[../../../../.gitbook/assets/partner-admin-device-details-approve-action]
+
+=== SBI (Secure Biometric Interface)
+
+==== Creating SBI
+
+The Partner can create SBI by filling in the required details.
+
+image:../../../../.gitbook/assets/device-sbi-create-page.PNG[../../../../.gitbook/assets/device-sbi-create-page]
+
+image:../../../../.gitbook/assets/device-sbi-create-2-page.PNG[../../../../.gitbook/assets/device-sbi-create-2-page]
+
+image:../../../../.gitbook/assets/device-sbi-create-success-page.PNG[../../../../.gitbook/assets/device-sbi-create-success-page]
+
+==== Approval/Rejection of SBI
+
+The Partner Admin can choose to approve/reject the SBI details entered
+by the partner.
+
+image:../../../../.gitbook/assets/partner-admin-sbi-details-view-page.PNG[../../../../.gitbook/assets/partner-admin-sbi-details-view-page]
+
+image:../../../../.gitbook/assets/partner-admin-sbi-details-actions.PNG[../../../../.gitbook/assets/partner-admin-sbi-details-actions]
+
+image:../../../../.gitbook/assets/partner-admin-sbi-details-approve-action.PNG[../../../../.gitbook/assets/partner-admin-sbi-details-approve-action]
+
+=== Mapping Device make and model with SBI
+
+The partner can map the device with an SBI.
+
+image:../../../../.gitbook/assets/device-make-model-sbi-mapping-menu.PNG[../../../../.gitbook/assets/device-make-model-sbi-mapping-menu]
+
+image:../../../../.gitbook/assets/device-make-model-sbi-mapping-page.PNG[../../../../.gitbook/assets/device-make-model-sbi-mapping-page]
+
+image:../../../../.gitbook/assets/device-make-model-sbi-mapping-success-page.PNG[../../../../.gitbook/assets/device-make-model-sbi-mapping-success-page]
+
+image:../../../../.gitbook/assets/device-make-model-sbi-mapping-success.PNG[../../../../.gitbook/assets/device-make-model-sbi-mapping-success]

@@ -1,0 +1,137 @@
+== Commons Developers Guide
+
+=== Overview
+
+https://docs.mosip.io/1.2.0/modules/commons[Commons] module provides a
+bedrock to build and run services by providing several significant
+necessary technical operations. It contains common functionalities which
+are used by more than one module.
+
+Below is a list of tools required in Commons:
+
+[arabic]
+. JDK 11
+. Any IDE (like Eclipse, IntelliJ IDEA)
+. Apache Maven (zip folder)
+. PostgreSQL
+. Any DB client (like DBeaver, pgAdmin)
+. Postman (any HTTP Client)
+. Git
+. Any Editor (like Vscode, Notepad{plus}{plus} etc optional)
+. lombok.jar (jar file)
+. settings.xml (document)
+
+==== Software setup
+
+[arabic]
+. Download https://projectlombok.org/download[lombok.jar] and
+https://github.com/mosip/documentation/tree/1.2.0/docs/_files/commons/settings.xml[settings.xml].
+. Unzip Apache Maven and move `settings.xml` to "`conf`" folder
+`++<++apache maven unzip path++>\++conf`.
+. Install Eclipse, open the `lombok.jar` file and then click
+`Install/Update`.
+
+image:../../../.gitbook/assets/lombok-configuration.png[../../../.gitbook/assets/lombok-configuration]
+
+[arabic]
+. Check the Eclipse installation folder to see if the `lombok.jar` is
+added.
+. Configure the JDK (Standard VM) with your Eclipse by traversing
+through `Preferences → Java → Installed JREs`.
+
+image:../../../.gitbook/assets/installed-jre.png[../../../.gitbook/assets/installed-jre]
+
+==== Source code setup
+
+For the code setup, clone the repository and follow the guidelines
+mentioned in the
+https://docs.mosip.io/1.2.0/community/code-contributions[Code
+Contributions].
+
+==== Importing and building
+
+[arabic]
+. Open the project folder where `pom.xml` is present.
+. Open the command prompt from the same folder.
+. Run the command `mvn clean install -Dgpg.skip=true -DskipTests=true`
+to build the project.
+. After building, open Eclipse and select
+`Import Projects → Maven → Existing Maven Projects → Next → Browse to project directory → Finish`.
+. After successful importing of project, update the project by
+right-click on `Project → Maven → Update Project`.
+
+image:../../../.gitbook/assets/import-project.png[../../../.gitbook/assets/import-project]
+
+=== Environment setup
+
+[arabic]
+. Download
+https://oss.sonatype.org/#nexus-search;gav~~kernel-auth-adapter~1.2.0-SNAPSHOT~~[Auth
+adapter] and add to project
+`Libraries → Classpath → Add External JARs → Select Downloaded JAR → Add → Apply and Close`.
++
+image:../../../.gitbook/assets/add-external-library.png[../../../.gitbook/assets/add-external-library]
+. Clone https://github.com/mosip/mosip-config[mosip-config repository].
+. Refer
+https://github.com/mosip/commons/blob/release-1.2.0/db_scripts/README.md[Commons-DB-deploy]
+to deploy local DB.
+. For integration with any of our environments, do reach out to our
+team.
+. `Commons` uses two property files, `kernel-default` and
+`application-default`, configure them accordingly. For instance
+
+* Update `spring.mail.host` property to update SMTP host.
+* Secrets can be encrypted using
+https://cloud.spring.io/spring-cloud-config/reference/html/#_encryption_and_decryption[config
+server].
+* Update Url’s in property files.(It can be either pointed to any
+remotely or locally deployed services).
+
+[arabic]
+. Download
+https://oss.sonatype.org/#nexus-search;gav~~kernel-config-server~1.2.0-SNAPSHOT~~[kernel-config-server.jar].
+For windows download
+link:../../../_files/commons/config-server-start.bat[config-server-start.bat],
+linux users can run
+`java -jar -Dspring.profiles.active=native -Dspring.cloud.config.server.native.search-locations=file:++{++mosip-config-mt++_++folder++_++path}/config -Dspring.cloud.config.server.accept-empty=true -Dspring.cloud.config.server.git.force-pull=false -Dspring.cloud.config.server.git.cloneOnStart=false -Dspring.cloud.config.server.git.refreshRate=0 ++{++jarName}`
+.
+. Run the server by opening the `config-server-start.bat` file.
+
+image:../../../.gitbook/assets/run-server.png[../../../.gitbook/assets/run-server]
+
+[arabic]
+. To verify the config-server, hit the below URL
+`http://localhost:51000/config/++{++spring.profiles.active}/++{++spring.cloud.config.name}/++{++spring.cloud.config.label}`
+for instance `http://localhost:51000/config/kernel/env/master`.
+
+=== Initialization and utilization of module
+
+[arabic]
+. `Commons` repo consists of two types of project- REST services and
+libraries.
+. Every REST service consist of `bootstrap.properties` file in
+`src/main/resources`.
+. Below properties needed to be modified in order to connect to the
+config server:
++
+....
+spring.cloud.config.uri=<config server uri>
+spring.cloud.config.label=<branch of config repo>
+spring.profiles.active=default
+....
+. Services can be run using
+`Run As -++>++ Spring Boot App/Java Application`.
+. Libraries are not meant to be run alone they are projects used by
+commons as well as other modules of mosip to perform commons operations.
+. For API documentation, refer https://docs.mosip.io/1.2.0/api[here].
+. The API’s can be tried with the help of *Swagger-UI* and *Postman*.
+. Swagger-UI of services can be accessed from
+`(https/http)://(++<++domain++>++/++<++host++>++:++<++port++>++)/++<++context-path++>++/swagger-ui/index.html?configUrl=++<++contect-path++>++/v3/api-docs/swagger-config`
+for instance
+`https://dev.mosip.net/v1/authmanager/swagger-ui/index.html?configUrl=/v1/authmanager/v3/api-docs/swagger-config`.
+. Context-path of services is present in `bootstrap.properties` file in
+`src/main/resources` of every service.
+. The API’s can be tried using Postman. URLs and Body structures can be
+found in Swagger or curl command can be copied and imported in Postman.
+
+image:../../../.gitbook/assets/postman-import-curl.png[../../../.gitbook/assets/postman-import-curl]

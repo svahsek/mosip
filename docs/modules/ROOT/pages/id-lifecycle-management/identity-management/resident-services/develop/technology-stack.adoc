@@ -1,0 +1,229 @@
+== Technology Stack
+
+===== *UI & Rest end points:*
+
+The table below outlines the frameworks, tools, and technologies
+employed by Resident Portal.
+
+Tool / Technology
+
+Version
+
+Description
+
+License
+
+Angular JS
+
+7.2.1
+
+AngularJS is a toolset for building the framework most suited to your
+application development. It is fully extensible and works well with
+other libraries.
+
+MIT License
+
+Node JS
+
+16.2.0
+
+Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript engine.
+
+MIT License
+
+===== *Resident Services:*
+
+The table below outlines the frameworks, tools, and technologies
+employed by Resident Services.
+
+Tool / Technology
+
+Version
+
+Description
+
+License
+
+Java SE 11
+
+OpenJDK 11
+
+Language Runtime in Docker Image
+
+GNU General Public License, version 2, with the Classpath Exception
+
+Ubuntu Server
+
+20.04
+
+Docker base image Operating System
+
+Free
+
+Spring
+
+5
+
+Application Framework
+
+Apache License 2.0
+
+Apache commons
+
+Version compatible with Spring 5
+
+Utilities
+
+Apache License 2.0
+
+Hibernate
+
+5.2.17.Final
+
+ORM
+
+Apache Software License 2.0
+
+Hibernate validator
+
+6.0.12.Final
+
+validator
+
+Apache Software License 2.0
+
+mvel2
+
+2.4.7.Final
+
+Expression language
+
+Apache License 2.0
+
+Jackson
+
+2.9.x
+
+JSON marshal/unmarshal
+
+Apache Software License 2.0
+
+Junit
+
+4.x and above
+
+Unit Testing
+
+Common Public License - v 1.0
+
+mockito
+
+2.22.0
+
+Junit - Mock Objects
+
+MIT
+
+power-mock
+
+2.0.7
+
+Junit - Mock Static Classes
+
+Apache Software License 2.0
+
+logback
+
+1.2.3
+
+Log
+
+GNU Lesser GPL Version 2.1
+
+velocity
+
+1.7
+
+Templating
+
+Apache Software License 2.0
+
+Swagger
+
+Open API - 3
+
+API Documentation
+
+Apache Software License 2.0
+
+Tomcat server
+
+8
+
+Application Server
+
+Apache Software License 2.0
+
+PostgreSQL
+
+Server: 10
+
+Database
+
+Postgres License BSD 2-clause "`Simplified License`"
+
+Sonar
+
+7.2
+
+Code quality Checking
+
+Open Source License
+
+Micrometer Prometheus
+
+1.4.2
+
+Metrics
+
+Apache Software License 2.0
+
+gson
+
+2.8.4
+
+JSON parser
+
+Apache Software License 2.0
+
+h2 database
+
+1.4.197
+
+JUnit Test DB
+
+EPL 1.0, MPL 2.0
+
+lombok
+
+1.18.8
+
+Development - reduce the boilerplate code
+
+MIT
+
+IText PDF
+
+5.5.13.3
+
+PDF Generation
+
+AGPL 3.0
+
+icu4j
+
+63.1
+
+Transliteration
+
+Unicode-3.0

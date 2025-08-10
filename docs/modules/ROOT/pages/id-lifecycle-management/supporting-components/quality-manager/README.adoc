@@ -1,0 +1,5 @@
+== Quality Manager
+
+nav-card-automation.png
+
+nav-card-manual.png

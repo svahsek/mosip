@@ -1,0 +1,140 @@
+== Overview
+
+=== Introduction
+
+Pre-registration module enables a resident to:
+
+* enter demographic data and upload supporting documents,
+* book an appointment for one or many users for registration by choosing
+a suitable registration center and a convenient time slot,
+* receive appointment notifications,
+* reschedule and cancel appointments.
+
+Once the resident completes the above process, their data is downloaded
+at the respective registration centers before their appointment, thus,
+saving enrollment time. The module supports multiple languages.
+
+MOSIP provides backend APIs for this module along with a reference
+implementation of link:./#pre-registration-portal[pre-registration
+portal].
+
+=== Pre-registration process
+
+.Pre-Registration Process
+image::../../../../.gitbook/assets/pre-reg-process.png[Pre-Registration
+Process]
+
+==== Create an application
+
+* User provides consent
+* The user provides demographic information
+* User uploads supporting documents (Proof of Address, Birth
+certificate, etc.)
+* A pre-registration request ID known as
+link:../../../identity-management/identifiers.md#rid-aid[AID] is
+generated and provided to the user.
+
+_Note_: The AID was formerly called PRID in the pre-registration
+context.
+
+==== Book an appointment
+
+* The user selects a registration center based on postal code,
+geo-location, etc.
+* The available slots are displayed
+* An option to cancel and re-book the appointment is made available
+
+==== Receiving acknowledgement notifications
+
+* An acknowledgment is sent via email/SMS
+* The user can print the acknowledgment containing AID and QR code.
+* This QR code can be scanned at the in-person registration centers.
+
+==== Download of pre-registration data at registration centers
+
+* The user provides the AID/ QR code at the registration center.
+* The registration form gets pre-filled with the pre-registration data.
+
+=== Pre-registration module
+
+The relationship of the pre-registration module with other services is
+explained here. 
+
+++{++% hint style="`info`" %} *NOTE:* The numbers do not signify a
+sequence of operations or control flow. ++{++% endhint %}
+
+image:../../../../.gitbook/assets/pre-reg-entity.png[../../../../.gitbook/assets/pre-reg-entity]
+
+[arabic]
+. Fetch link:../../../../id-schema/[ID Schema] details with the help of
+Syncdata service.
+. Fetch a new OTP for the user on the login page.
+. Log all events.
+. Pre-Registration interacts with Keycloak via
+https://github.com/mosip/mosip-openid-bridge/tree/release-1.2.0[`kernel-auth-adapater`].
+The Pre-Reg module communicates with endpoints of other MOSIP modules.
+However, to access these endpoints, a token is required. This token is
+obtained from Keycloak.
+. The database used by pre-reg.
+. Generate a new AID for the application.
+. Send OTP in the email/SMS to the user.
+. Registration Processor uses reverse sync to mark the pre-reg
+application as consumed.
+. Registration clients use the
+https://github.com/mosip/pre-registration/tree/release-1.2.0/pre-registration/pre-registration-datasync-service[Datasync
+service] to get the pre-reg application details for a given registration
+center, booking date, and AID.
+. Request data from the MasterData service to get data for dropdowns,
+locations, consent forms etc.
+
+=== Services
+
+Pre-registration module consists of the following services:
+
+* https://github.com/mosip/pre-registration/tree/release-1.2.0/pre-registration/pre-registration-application-service[Application]
+* https://github.com/mosip/mosip-ref-impl/tree/release-1.2.0/pre-registration-booking-service[Booking]
+* https://github.com/mosip/pre-registration/tree/release-1.2.0/pre-registration/pre-registration-batchjob[Batchjob]
+* https://github.com/mosip/pre-registration/tree/release-1.2.0/pre-registration/pre-registration-datasync-service[Datasync]
+* https://github.com/mosip/pre-registration/tree/release-1.2.0/pre-registration/pre-registration-captcha-service[Captcha]
+
+For more details, refer to the
+https://github.com/pjoshi751/pre-registration/tree/develop[Pre-registration
+repo].
+
+=== Pre-registration portal
+
+MOSIP provides a *reference* implementation of the pre-registration
+portal that may be customized as per country needs. The sample
+implementation is available at the
+https://github.com/mosip/mosip-ref-impl[reference implementation
+repository]. For getting started with the pre-registration, refer to the
+link:../test/pre-registration-user-guide.md[Pre-registration user guide]
+
+=== Build and deploy
+
+To access the build and read through the deployment instructions, refer
+to the
+https://github.com/mosip/pre-registration/tree/release-1.2.0[Pre-registration
+repo].
+
+=== Configurations
+
+For details related to Pre-registration configurations, refer to
+https://github.com/mosip/pre-registration/blob/release-1.2.0/docs/configuration.md[Pre-registration
+configuration].
+
+=== Developer Guide
+
+To know more about the developer setup, read the
+https://docs.mosip.io/1.2.0/modules/pre-registration/pre-registration-developer-setup[Pre-registration
+Developers Guide].
+
+=== API
+
+Refer to https://mosip.github.io/documentation/1.2.0/1.2.0.html[API
+Documentation].
+
+=== Source code
+
+https://github.com/mosip/pre-registration/tree/release-1.2.0[Github
+repo].

@@ -1,0 +1,205 @@
+== Partner Management System
+
+Partners are vendors or solution providers who offer their
+products/services to ensure the effective implementation and operation
+of MOSIP-based identity systems.
+
+Partner Management Portal (PMP) is a web based application that is
+designed to facilitate the collaboration and integration of external
+partners with the MOSIP ecosystem. This portal serves as a platform to
+onboard all types of MOSIP partners, manage their details and build
+partner specific functionalities for seamless interaction.
+
+We are undertaking a comprehensive overhaul of our existing Partner
+Management Portal (PMP). This revamp includes introducing a suite of new
+features and significantly enhancing the current ones. Our aim is to
+improve usability and elevate the overall user experience (UX). Also
+incorporating tech stack upgrade and realigning our focus to bring user
+centered design to PMP, we are committed to making the PMP more
+intuitive, efficient, and aligned with our partners’ evolving needs.
+
+You can refer to the comprehensive documentation as below:
+
+* link:broken-reference/[PMS - Revamp] : Documentation that includes the
+features in new UI
+* link:pms-existing/[PMS - Legacy]: Existing documentation (Old UI)
+
+==== Who are the partners in MOSIP?
+
+Partner Type
+
+What do they do in MOSIP?
+
+Why do they need PMS portal?
+
+Authentication Partner
+
+They are also called Relying Party or Service Providers which uses MOSIP
+authentication services for delivering services
+
+Shares partner certificate which would be used to build a trust store in
+MOSIP to cryptographically validate that they were the ones who were
+authenticating the citizens also this certificate is used to encrypt the
+response shared in e-KYC.
+
+They choose a policy which they want to use and request for approval for
+the policy from the partner admin.
+
+Once a policy is approved, they can perform eSignet (OIDC Client) and/or
+API based authentication.
+
+They can create OIDC client for an approved policy which is used in
+eSignet authentication.
+
+They can generate API Keys against the policy in order to use it during
+citizen authentication.
+
+They can also deactivate an OIDC Client or API Key if it is compromised
+
+Device Provider
+
+Provide devices for Registration and Authentication
+
+Shares partner certificate which would be used to build a trust store in
+MOSIP to cryptographically validate that the biometric data was captured
+by a device issued by the device provider.
+
+Provides make & model details of devices for book keeping.
+
+Provides SBI information for book keeping.
+
+FTM Chip Provider
+
+Provides secure chip for Authentication devices
+
+Shares partner certificate which would be used to build a trust store in
+MOSIP to cryptographically validate that the biometric data was captured
+by a device integrated with a chip issued by the FTM chip provider.
+
+Provide chip model details for book keeping.
+
+ABIS Partner
+
+Provides ABIS engine to deduplicate biometrics
+
+Shares partner certificate which would be used for encryption the
+biometric data that is shared during deduplication.
+
+The request for a policy based on which data is shared with them for
+deduplication
+
+Manual Adjudication System
+
+Manual Adjudication system helps a biometric expert to compare two sets
+of biometric data and few demographic data, so that, the adjudicator can
+take the final decision that the identified record is actually a
+duplicate.
+
+Shares partner certificate which would be used for encryption the
+biometric and demographic data that is shared during deduplication.
+
+The request for a policy based on which data is shared with them for
+adjudication
+
+SDK Partner
+
+Provides SDKs that are used for performing matching of two records,
+checking the quality of the biometrics or generating biometric
+templates.
+
+They don’t need Partner Management Portal
+
+MISP (MOSIP Infrastructure Service Providers)
+
+They provide infrastructure services to MOSIP and help relying parties
+(authentication partners) access the authentication endpoints exposed by
+MOSIP
+
+Share partner certificate which helps verify that the ISP is a genuine
+partner, the certificate uploaded is generally not used in MOSIP.
+
+Generate License Keys which would be used for during citizen
+authentication.
+
+ID Authentication Module / Online Verification Partner
+
+Module that stores ID data used for authenticating the citizens
+
+This is an internal module
+
+Generally added from the backend by the administrator
+
+Printing/ Credential Partner
+
+They provide print solution
+
+Shares partner certificate which would be used for encryption the face
+and demographic data that is shared for printing the ID card.
+
+The request for a policy based on which data is shared with them for
+printing
+
+==== Policy group
+
+Common policies group examples include '`Telecom`', '`Banking`',
+'`Insurance`' among others.
+
+==== What are the policies used in MOSIP?
+
+* Data Share Policy
+* Authentication Policy
+
+Policy type
+
+Partners
+
+Description
+
+Auth policy
+
+AP
+
+Specifies authentication types and KYC fields to be shared during
+authentication.
+
+Datashare policy
+
+Online Verification Partner, Credential Partner, Manual Adjudiation,
+ABIS partner
+
+Specifies data to be shared with partners
+
+++{++% hint style="`info`" %} *Note:* Policies are not applicable for
+Device Provider, FTM Provider and MISP Partner as data is not shared
+with them. ++{++% endhint %}
+
+Refer to the
+https://github.com/mosip/partner-management-services/blob/release-1.2.0/db_scripts/mosip_pms/dml/pms-auth_policy.csv[default
+policies] loaded while installing MOSIP.
+
+==== Partner Policies
+
+Partner policies control the data that needs to be shared with a
+partner. The policies reside in
+https://github.com/mosip/partner-management-services/blob/release-1.2.0/db_scripts/mosip_pms/ddl/pms-auth_policy.sql[`auth++_++policy`
+table] of `mosip++_++pms` DB..
+
+==== Partner roles
+
+[cols=",",options="header",]
+|===
+|*Partner Type* |*Associated Role*
+|Partner Admin |PARTNER++_++ADMIN
+|Policy Manager |POLICYMANAGER
+|Authentication Partner |*AUTH++_++PARTNER (new UI)*
+|Credential Partner |CREDENTIAL++_++PARTNER
+|Device Provider |DEVICE++_++PROVIDER
+|FTM Provider |FTM++_++PROVIDER
+|===
+
+=== Documentation
+
+link:broken-reference/[PMS Revamp]
+
+link:pms-existing/[PMS Legacy] +
+.

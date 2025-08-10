@@ -1,0 +1,69 @@
+== Reporting
+
+=== Overview
+
+MOSIP provides a reporting framework for real-time streaming of data and
+visualization. The dashboards give a visual display of metrics and
+important data to track the status of various pre and post-enrollment
+processes. This data helps ID issuers with improving efficiency,
+forecasting, and better decision-making. The framework has been used to
+create a set of default dashboards using Kibana.
+
+Details of reporting framework can be found
+https://github.com/mosip/reporting/blob/release-1.2.0/README.md[here].
+
+=== Dashboards
+
+The following dashboards are configured on
+https://www.elastic.co/kibana/[Kibana]. The NDJSON source files are
+available
+https://github.com/mosip/reporting/tree/release-1.2.0/dashboards[here].
+
+==== Pre-registration
+
+image:../../../.gitbook/assets/reports-preregistration-1.png[../../../.gitbook/assets/reports-preregistration-1]
+image:../../../.gitbook/assets/reports-preregistration-2.png[../../../.gitbook/assets/reports-preregistration-2]
+
+==== Pre-registration operations
+
+image:../../../.gitbook/assets/reports-preregistration-operations-1.png[../../../.gitbook/assets/reports-preregistration-operations-1]
+image:../../../.gitbook/assets/reports-preregistration-operations-2.png[../../../.gitbook/assets/reports-preregistration-operations-2]
+
+==== Registration
+
+image:../../../.gitbook/assets/reports-registration-1.png[../../../.gitbook/assets/reports-registration-1]
+image:../../../.gitbook/assets/reports-registration-2.png[../../../.gitbook/assets/reports-registration-2]
+
+==== Authentication
+
+image:../../../.gitbook/assets/reports-authentication.png[../../../.gitbook/assets/reports-authentication]
+
+==== Registration profile
+
+image:../../../.gitbook/assets/reports-registration-profile-1.png[../../../.gitbook/assets/reports-registration-profile-1]
+image:../../../.gitbook/assets/reports-registration-profile-2.png[../../../.gitbook/assets/reports-registration-profile-2]
+
+==== ID issuance profile
+
+image:../../../.gitbook/assets/reports-id-issuance-1.png[../../../.gitbook/assets/reports-id-issuance-1]
+image:../../../.gitbook/assets/reports-id-issuance-2.png[../../../.gitbook/assets/reports-id-issuance-2]
+
+==== Overall trend
+
+image:../../../.gitbook/assets/reports-combined-dashboard.png[../../../.gitbook/assets/reports-combined-dashboard]
+
+=== How to customize?
+
+The reporting pipeline and dashboards may be customized according to an
+adopter’s requirements.
+
+* Setup a data pipeline for populating data from database to
+Elasticsearch as given
+https://github.com/mosip/reporting/blob/release-1.2.0/docs/connectors.md[here].
+* After data is populated in Elasticsearch, add/customize dashboards in
+Kibana as given
+https://www.elastic.co/guide/en/kibana/current/dashboard.html[here].
+
+=== Source code
+
+https://github.com/mosip/reporting/tree/release-1.2.0[Github repo]

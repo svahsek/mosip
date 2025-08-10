@@ -1,0 +1,80 @@
+== Postgres DB
+
+=== Overview
+
+MOSIP uses https://www.postgresql.org[Postgres] DB for all relational
+data storage. The DB creation SQL scripts are located under
+`/db++_++scripts` the folder of the module repository. In
+https://github.com/mosip/mosip-infra/tree/release-1.2.0/deployment/v3/external/postgres[sandbox
+deployment], Postgres is installed as a docker inside the cluster.
+However, in production deployment, typically, Postgres will be installed
+external to the cluster.
+
+=== ER diagrams
+
+Entity relationships diagrams for all databases used in MOSIP are given
+below.
+
+* link:../../../_images/mosip-audit-er.png[mosip++_++audit]
+* link:../../../_images/mosip-authdevice-er.png[mosip++_++authdevice]
+* link:../../../_images/mosip-credential-er.png[mosip++_++credential]
+* link:../../../_images/mosip-hotlist-er.png[mosip++_++hotlist]
+* link:../../../_images/mosip-ida-er.png[mosip++_++ida]
+* link:../../../_images/mosip-idmap-er.png[mosip++_++idmap]
+* link:../../../_images/mosip-idrepo-er.png[mosip++_++idrepo]
+* link:../../../_images/mosip-kernel-er.png[mosip++_++kernel]
+* link:../../../_images/mosip-keymgr-er.png[mosip++_++keymgr]
+* link:../../../_images/mosip-master-er.png[mosip++_++master]
+* link:../../../_images/mosip-pms-er.png[mosip++_++pms]
+* link:../../../_images/mosip-prereg-er.png[mosip++_++prereg]
+* link:../../../_images/mosip-regdevice-er.png[mosip++_++regdevice]
+* link:../../../_images/mosip-regprc-er.png[mosip++_++regprc]
+
+=== Configuration parameters
+
+* Connection details
+** `++{++module++_++name`}`++_++database++_++url`
+** `++{++module++_++name`}`++_++database++_++username`
+** `++{++module++_++name`}`++_++database++_++password`
+* Hibernate configurations
+** `javax.persistence.jdbc.driver`
+** `hibernate.dialect`
+** `hibernate.jdbc.lob.non++_++contextual++_++creation`
+** `hibernate.hbm2ddl.auto`
+** `hibernate.show++_++sql`
+** `hibernate.format++_++sql`
+** `hibernate.connection.charSet`
+** `hibernate.cache.use++_++second++_++level++_++cache`
+** `hibernate.cache.use++_++query++_++cache`
+** `hibernate.cache.use++_++structured++_++entries`
+** `hibernate.generate++_++statistics`
+** `logging.level.org.hibernate.SQL`
+** `logging.level.org.hibernate.type`
+
+==== Production DB configuration
+
+These are some of the _reference settings_ of a production database. It
+is expected that these are reviewed and finalized for a given
+deployment.
+
+....
+resources: 
+  limits: {}
+  #   cpu: 250m
+  #   memory: 1Gi
+  requests: 
+    cpu: 8000m
+    memory: 32000Mi
+
+postgresqlExtendedConf:                 
+   wal_level: logical
+   max_wal_senders: 20
+   max_replication_slots: 10
+   shared_buffers: 16GB                         
+   max_prepared_transactions: 1000
+   huge_pages: try                              
+   work_mem: 16MB                       # min 64kB
+   maintenance_work_mem: 3GB            # min 1MB
+   effective_cache_size: 32GB                   
+   log_min_duration_statement: 1000
+....

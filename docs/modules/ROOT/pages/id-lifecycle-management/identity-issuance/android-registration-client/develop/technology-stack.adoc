@@ -1,0 +1,34 @@
+== Technology Stack
+
+The table below outlines the frameworks, tools, and technologies
+employed by the Android Registration Client.
+
+Tool /Technology
+
+Version
+
+Description
+
+License
+
+Flutter
+
+3.10.4
+
+Flutter transforms the development process. Build, test, and deploy
+beautiful mobile, web, desktop, and embedded experiences from a single
+codebase.
+
+BSD License
+
+Dart
+
+3.0.3
+
+BSD License
+
+*Android SDK Versions :*
+
+Target SDK Version : 31
+
+Compile SDK Version : 31

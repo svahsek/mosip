@@ -1,0 +1,52 @@
+== Datashare
+
+=== Overview
+
+The DataShare service is used to share data with other entrusted
+services and partners. The mechanism shares are the following:
+
+[arabic]
+. Retrieves and stores data to be shared in
+link:persistence/object-store.md[Object Store] and returns a Datashare
+URL.
+. It fetches data from the Object Store when the Datashare URL is
+called.
+
+The sharing of data is controlled by the
+link:../support-systems/partner-management-services/pms-existing/partner-policies.md#datashare-policy[Datashare
+policy].
+
+Data is encrypted before sharing it with partners. Learn more about
+link:../../readme/principles/privacy-and-security/data-protection.md#datashare[datashare
+encryption].
+
+The relationship of Datashare Service with other services is explained
+here. _NOTE: The numbers do not signify the sequence of operations or
+control flow. Arrows indicate the data flow._
+
+image:../../.gitbook/assets/datashare.png[../../.gitbook/assets/datashare]
+
+[arabic]
+. ABIS Handler Stage creates datashare for ABIS.
+. Manual Adjudication Stage creates datashare for adjudication.
+. Verification Stage creates datashare for verification.
+. Datashare Service calls
+link:../support-systems/partner-management-services/#policy-management-service[Policy
+Manager Service] to get the policy for creating shares.
+. It calls the link:../supporting-services/keymanager/[Keymanager]
+Service to encrypt data as per policy.
+. Stores datashare inside link:persistence/object-store.md[object
+store].
+. Retrieves datashare from the object store when the datashare URL is
+called.
+. External systems like link:biometrics/abis.md[ABIS], Print System,
+Adjudication system etc. calls Datashare Service to get the datashare.
+. Print Service creates UIN PDF and uploads to datashare through
+Credential.
+. link:../support-systems/partner-management-services/[Partner Manager
+Service] creates credentials for CA certificates to be used by
+link:../identity-verification/id-authentication.md[ID Authentication].
+. Printing Stage creates credentials for printing systems and sends the
+data through datashare.
+. link:../identity-issuance/id-repository/[ID Repository] Service sends
+data to ID Authentication system through Credential.

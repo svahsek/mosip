@@ -1,0 +1,71 @@
+== Partner Management System
+
+=== Overview
+
+Partner Management System (PMS) module provides the following services:
+
+[arabic]
+. Partner Management Service
+. Policy Management Service
+
+For an overview of role of partners in MOSIP, refer
+link:../partners.md[here].
+
+=== Partner Management Service
+
+Provides various partner services like onboarding partners and providing
+partner data to other modules.
+
+The diagram below illustrates the relationship of this service to other
+MOSIP services.
+
+image:../../../../.gitbook/assets/pms.png[../../../../.gitbook/assets/pms]
+
+[arabic]
+. Certificates of partner are uploaded to
+link:../../../supporting-services/keymanager/[Key Manager] as part of
+onboarding.
+. Registration processor fetches ABIS datashare policy from PMS.
+. PMS sends notification messages to partners via notification service
+(of Kernel).
+. Audit logs are logged into Auditmanager.
+. link:../../../identity-issuance/id-repository/[ID Repository] fetches
+credential data share partners and their polices from PMS.
+. All PMS data is stored in `mosip++_++pms` DB.
+. Certificates of Authentication Partners are sent to IDA module as IDA
+runs independently. The certs are shared using
+link:../../../supporting-components/datashare.md[Datashare] (which
+futher uses Websub to share data with IDA).
+
+=== Policy Management Service
+
+This service manages partner policies.
+
+image:../../../../.gitbook/assets/policymanager.png[../../../../.gitbook/assets/policymanager]
+
+[arabic]
+. Audit logs are logged into Auditmanager.
+. All policies are stored stored in `mosip++_++pms` DB.
+. Datashare service fetches partner policies and shares data with
+partners accordingly.
+
+=== Partner portal
+
+To know more about the partner portal, refer
+link:partner-management-portal.md[Partner Management portal].
+
+=== Developer Guide
+
+To know more about the developer setup, read
+https://docs.mosip.io/1.2.0/modules/partner-management-services/partner-management-services-developer-setup[Partner
+Management Services Developers Guide].
+
+=== API
+
+Refer https://mosip.github.io/documentation/1.2.0/1.2.0.html[API
+Documentation].
+
+=== Source code
+
+https://github.com/mosip/partner-management-services/tree/release-1.2.0[Github
+repo].

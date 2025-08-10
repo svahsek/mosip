@@ -1,0 +1,734 @@
+== Load Email Templates for Notifications in Master Data
+
+To get email notifications from the PMS service, all required templates
+must be added to the Master Data Service, follow the steps below to load
+the templates.
+
+==== Steps to Authenticate the Master Data Service
+
+To access the Master Data Service, follow the steps below to obtain and
+use a client token via the Auth Manager service.
+
+[arabic]
+. Use the following Swagger URL to interact with the Auth Manager API:
+`https://api-internal.$++{++env}.mosip.net/v1/authmanager/swagger-ui/index.html?configUrl=/v1/authmanager/v3/api-docs/swagger-config`
+. Use the `/authenticate/clientidsecretkey` endpoint to generate a
+client token.
+. Once the token is validated successfully, it will be added to the
+browser cookies automatically. This token will be used for
+authenticating subsequent requests to the Master Data Service.
+
+*Request payload*:
+
+....
+{
+  "id": "string",
+  "version": "string",
+  "requesttime": "2022-12-22T07:13:35.010Z",
+  "metadata": {},
+  "request": {
+    "clientId": "mosip-pms-client",
+    "secretKey": "XXXXXX",
+    "appId": "partner"
+  }
+}
+....
+
+===== Steps to create a new template type in MasterData:
+
+[arabic]
+. Use the following Swagger URL for Master Data Service:
+`https://api-internal.++{++env}.mosip.net/v1/masterdata/swagger-ui/index.html?configUrl=/v1/masterdata/v3/api-docs/swagger-config#/`
+. Use the `POST /templatetypes` endpoint from the Master Data Service to
+create a new template type.
+. The request body should include the following fields:
+* `code`: Unique identifier for the template type.
+* `description`: Description of the template type.
+* `isActive`: Boolean value indicating whether the template type is
+active.
+* `langCode`: Language code for the template type.
+. Once the template type is created, it can be used for template
+creation.
+
+Example Request Body:
+
+....
+{ 
+  "id": "string", 
+  "version": "string", 
+  "requesttime": "2025-02-26T07:14:29.119Z", 
+  "metadata": {}, 
+  "request": 
+  { 
+    "code": "PARTNER_CERT_EXPIRY_TEMPLATE", 
+    "description": "Template type for partner certificate expiry", 
+    "isActive": true, 
+    "langCode": "fra" 
+    } 
+  }
+....
+
+Make sure to create the following template types for PMS notification
+templates. 
+
+Each template type should be created for all six supported languages:
+English (eng), French (fra), Arabic (ara), Tamil (tam), Hindi (hin) and
+Kannada (kan).
+
+* ROOT++_++CERT++_++EXPIRY
+* INTERMEDIATE++_++CERT++_++EXPIRY
+* PARTNER++_++CERT++_++EXPIRY
+* WEEKLY++_++SUMMARY++_++TEMPLATE
+* ROOT++_++CERT++_++EXPIRY++_++SUBJECT
+* INTERMEDIATE++_++CERT++_++EXPIRY++_++SUBJECT
+* PARTNER++_++CERT++_++EXPIRY++_++SUBJECT
+* WEEKLY++_++SUMMARY++_++SUBJECT
+
+===== Steps to add a new template for PMS:
+
+New Templates are avaliable here
+https://github.com/mosip/partner-management-services/tree/develop/docs/templates
+
+[arabic]
+. Use the `POST /templates` endpoint from the Master Data Service to add
+new templates for the PMS module.
+. The request body must include the following fields:
+* `id`: ID of the template.
+* `name`: Name of the template.
+* `description`: Description of the template.
+* `fileFormatCode`: Format of the template file (e.g., html or txt).
+* `model`: Template model type (e.g., velocity).
+* `fileText`: Content of the template in the specified format.(*If the
+file contains HTML content, all double quotes* ” *within the content
+should be escaped using a backslash* ++\++“)
+* `moduleId`: Unique identifier for the PMS module.
+* `moduleName`: Name of the module (e.g., PMS).
+* `templateTypeCode`: Code of the template type.
+* `langCode`: Language code for the template.
+* `isActive`: Boolean value indicating whether the template is active.
+. Once the template is created, it will be stored in the
+mosip++_++master database.
+
+Example Request Body:
+
+....
+{
+  "id": "string",
+  "version": "string",
+  "requesttime": "2025-02-26T04:06:44.594Z",
+  "metadata": {},
+  "request": {
+    "id": null,
+    "name": "partner-certificate-expiry-template-eng",
+    "description": "Template for partner certificate expiry",
+    "fileFormatCode": "html",
+    "model": "velocity",
+    "fileText": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /><style></style></head></html>",
+    "moduleId": "10007",
+    "moduleName": "PMS",
+    "templateTypeCode": "PARTNER_CERT_EXPIRY_TEMPLATE",
+    "langCode": "eng",
+    "isActive": true
+  }
+}
+....
+
+Also add all the templates listed in the tables below with the specified
+*ID*, *name*, *description*, and other relevant details as provided.
+
+ID
+
+Name
+
+Description
+
+File Fomat Code
+
+Template Type Code
+
+LangCode
+
+3516
+
+root-certificate-expiry-template-eng
+
+Template for root certificate expiry
+
+html
+
+ROOT++_++CERT++_++EXPIRY++_++TEMPLATE
+
+eng
+
+3517
+
+root-certificate-expiry-template-fra
+
+Modèle d’expiration du certificat racine
+
+html
+
+ROOT++_++CERT++_++EXPIRY++_++TEMPLATE
+
+fra
+
+3518
+
+root-certificate-expiry-template-ara
+
+نموذج لانتهاء صلاحية شهادة الجذر
+
+html
+
+ROOT++_++CERT++_++EXPIRY++_++TEMPLATE
+
+ara
+
+3519
+
+root-certificate-expiry-template-hin
+
+रूट प्रमाणपत्र समाप्ति के लिए टेम्पलेट
+
+html
+
+ROOT++_++CERT++_++EXPIRY++_++TEMPLATE
+
+hin
+
+3520
+
+root-certificate-expiry-template-kan
+
+ಮೂಲ ಪ್ರಮಾಣಪತ್ರದ ಮುಕ್ತಾಯ ದಿನಾಂಕದ ಟೆಂಪ್ಲೇಟ್
+
+html
+
+ROOT++_++CERT++_++EXPIRY++_++TEMPLATE
+
+kan
+
+3521
+
+root-certificate-expiry-template-tam
+
+ரூட் சான்றிதழ் காலாவதிக்கான டெம்ப்ளேட்
+
+html
+
+ROOT++_++CERT++_++EXPIRY++_++TEMPLATE
+
+tam
+
+3522
+
+intermediate-certificate-expiry-template-eng
+
+Template for intermediate certificate expiry
+
+html
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++TEMPLATE
+
+eng
+
+3523
+
+intermediate-certificate-expiry-template-fra
+
+Modèle d’expiration de certificat intermédiaire
+
+html
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++TEMPLATE
+
+fra
+
+3524
+
+intermediate-certificate-expiry-template-ara
+
+نموذج انتهاء صلاحية الشهادة المتوسطة
+
+html
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++TEMPLATE
+
+ara
+
+3525
+
+intermediate-certificate-expiry-template-hin
+
+मध्यवर्ती प्रमाणपत्र समाप्ति के लिए टेम्पलेट
+
+html
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++TEMPLATE
+
+hin
+
+3526
+
+intermediate-certificate-expiry-template-kan
+
+ಮಧ್ಯಂತರ ಪ್ರಮಾಣಪತ್ರ ಮುಕ್ತಾಯಕ್ಕಾಗಿ ಟೆಂಪ್ಲೇಟ್
+
+html
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++TEMPLATE
+
+kan
+
+3527
+
+intermediate-certificate-expiry-template-tam
+
+இடைநிலை சான்றிதழ் காலாவதிக்கான டெம்ப்ளேட்
+
+html
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++TEMPLATE
+
+tam
+
+3528
+
+partner-certificate-expiry-template-eng
+
+Template for partner certificate expiry
+
+html
+
+PARTNER++_++CERT++_++EXPIRY++_++TEMPLATE
+
+eng
+
+3529
+
+partner-certificate-expiry-template-fra
+
+Modèle d’expiration du certificat de partenaire
+
+html
+
+PARTNER++_++CERT++_++EXPIRY++_++TEMPLATE
+
+fra
+
+3530
+
+partner-certificate-expiry-template-ara
+
+نموذج انتهاء صلاحية شهادة الشريك
+
+html
+
+PARTNER++_++CERT++_++EXPIRY++_++TEMPLATE
+
+ara
+
+3531
+
+partner-certificate-expiry-template-hin
+
+भागीदार प्रमाणपत्र समाप्ति के लिए टेम्पलेट
+
+html
+
+PARTNER++_++CERT++_++EXPIRY++_++TEMPLATE
+
+hin
+
+3532
+
+partner-certificate-expiry-template-kan
+
+ಪಾಲುದಾರ ಪ್ರಮಾಣಪತ್ರದ ಮುಕ್ತಾಯ ದಿನಾಂಕದ ಟೆಂಪ್ಲೇಟ್
+
+html
+
+PARTNER++_++CERT++_++EXPIRY++_++TEMPLATE
+
+kan
+
+3533
+
+partner-certificate-expiry-template-tam
+
+கூட்டாளர் சான்றிதழ் காலாவதிக்கான டெம்ப்ளேட்
+
+html
+
+PARTNER++_++CERT++_++EXPIRY++_++TEMPLATE
+
+tam
+
+3534
+
+weekly-summary-template-eng
+
+Template for weekly summary notifications
+
+html
+
+WEEKLY++_++SUMMARY++_++TEMPLATE
+
+eng
+
+3535
+
+weekly-summary-template-fra
+
+Modèle pour les notifications récapitulatives hebdomadaires
+
+html
+
+WEEKLY++_++SUMMARY++_++TEMPLATE
+
+fra
+
+3536
+
+weekly-summary-template-ara
+
+نموذج لإشعارات الملخص الأسبوعية
+
+html
+
+WEEKLY++_++SUMMARY++_++TEMPLATE
+
+ara
+
+3537
+
+weekly-summary-template-hin
+
+साप्ताहिक सारांश अधिसूचनाओं के लिए टेम्पलेट
+
+html
+
+WEEKLY++_++SUMMARY++_++TEMPLATE
+
+hin
+
+3538
+
+weekly-summary-template-kan
+
+ವಾರದ ಸಾರಾಂಶ ಅಧಿಸೂಚನೆಗಳಿಗಾಗಿ ಟೆಂಪ್ಲೇಟ್
+
+html
+
+WEEKLY++_++SUMMARY++_++TEMPLATE
+
+kan
+
+3539
+
+weekly-summary-template-tam
+
+வாராந்திர சுருக்க அறிவிப்புகளுக்கான டெம்ப்ளேட்
+
+html
+
+WEEKLY++_++SUMMARY++_++TEMPLATE
+
+tam
+
+3540
+
+root-certificate-expiry-sub-template-eng
+
+Subject template for root certificate expiry
+
+txt
+
+ROOT++_++CERT++_++EXPIRY++_++SUBJECT
+
+eng
+
+3541
+
+root-certificate-expiry-sub-template-fra
+
+Modèle de sujet pour l’expiration du certificat racine
+
+txt
+
+ROOT++_++CERT++_++EXPIRY++_++SUBJECT
+
+fra
+
+3542
+
+root-certificate-expiry-sub-template-ara
+
+نموذج موضوعي لانتهاء صلاحية شهادة الجذر
+
+txt
+
+ROOT++_++CERT++_++EXPIRY++_++SUBJECT
+
+ara
+
+3543
+
+root-certificate-expiry-sub-template-hin
+
+रूट प्रमाणपत्र समाप्ति के लिए विषय टेम्पलेट
+
+txt
+
+ROOT++_++CERT++_++EXPIRY++_++SUBJEC
+
+hin
+
+3544
+
+root-certificate-expiry-sub-template-kan
+
+ಮೂಲ ಪ್ರಮಾಣಪತ್ರದ ಮುಕ್ತಾಯ ದಿನಾಂಕದ ವಿಷಯ ಟೆಂಪ್ಲೇಟ್
+
+txt
+
+ROOT++_++CERT++_++EXPIRY++_++SUBJEC
+
+kan
+
+3545
+
+root-certificate-expiry-sub-template-tam
+
+மூலச் சான்றிதழ் காலாவதிக்கான பொருள் டெம்ப்ளேட்
+
+txt
+
+ROOT++_++CERT++_++EXPIRY++_++SUBJEC
+
+tam
+
+3546
+
+intermediate-certificate-expiry-sub-template-eng
+
+Subject template for intermediate certificate expiry
+
+txt
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++SUBJECT
+
+eng
+
+3547
+
+intermediate-certificate-expiry-sub-template-fra
+
+Modèle de sujet pour l’expiration du certificat intermédiaire
+
+txt
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++SUBJECT
+
+fra
+
+3548
+
+intermediate-certificate-expiry-sub-template-ara
+
+نموذج موضوعي لانتهاء صلاحية الشهادة المتوسطة
+
+txt
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++SUBJECT
+
+ara
+
+3549
+
+intermediate-certificate-expiry-sub-template-hin
+
+इंटरमीडिएट प्रमाणपत्र समाप्ति के लिए विषय टेम्पलेट
+
+txt
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++SUBJECT
+
+hin
+
+3550
+
+intermediate-certificate-expiry-sub-template-kan
+
+ಮಧ್ಯಂತರ ಪ್ರಮಾಣಪತ್ರ ಮುಕ್ತಾಯಕ್ಕಾಗಿ ವಿಷಯ ಟೆಂಪ್ಲೇಟ್
+
+txt
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++SUBJECT
+
+kan
+
+3551
+
+intermediate-certificate-expiry-sub-template-tam
+
+இடைநிலை சான்றிதழ் காலாவதிக்கான பொருள் வார்ப்புரு
+
+txt
+
+INTERMEDIATE++_++CERT++_++EXPIRY++_++SUBJECT
+
+tam
+
+3552
+
+partner-certificate-expiry-sub-template-eng
+
+Subject template for partner certificate expiry
+
+txt
+
+PARTNER++_++CERT++_++EXPIRY++_++SUBJECT
+
+eng
+
+3553
+
+partner-certificate-expiry-sub-template-fra
+
+Modèle de sujet pour l’expiration du certificat du partenaire
+
+txt
+
+PARTNER++_++CERT++_++EXPIRY++_++SUBJECT
+
+fra
+
+3554
+
+partner-certificate-expiry-sub-template-ara
+
+نموذج موضوعي لانتهاء صلاحية شهادة الشريك
+
+txt
+
+PARTNER++_++CERT++_++EXPIRY++_++SUBJECT
+
+ara
+
+3555
+
+partner-certificate-expiry-sub-template-hin
+
+भागीदार प्रमाणपत्र समाप्ति के लिए विषय टेम्पलेट
+
+txt
+
+PARTNER++_++CERT++_++EXPIRY++_++SUBJECT
+
+hin
+
+3556
+
+partner-certificate-expiry-sub-template-kan
+
+ಪಾಲುದಾರ ಪ್ರಮಾಣಪತ್ರದ ಮುಕ್ತಾಯದ ವಿಷಯ ಟೆಂಪ್ಲೇಟ್
+
+txt
+
+PARTNER++_++CERT++_++EXPIRY++_++SUBJECT
+
+kan
+
+3557
+
+partner-certificate-expiry-sub-template-tam
+
+கூட்டாளர் சான்றிதழ் காலாவதிக்கான பொருள் டெம்ப்ளேட்
+
+txt
+
+PARTNER++_++CERT++_++EXPIRY++_++SUBJECT
+
+tam
+
+3558
+
+weekly-summary-subject-template-eng
+
+Subject template for weekly summary notifications
+
+txt
+
+WEEKLY++_++SUMMARY++_++SUBJECT
+
+eng
+
+3559
+
+weekly-summary-subject-template-fra
+
+Modèle de sujet pour les notifications récapitulatives hebdomadaires
+
+txt
+
+WEEKLY++_++SUMMARY++_++SUBJECT
+
+fra
+
+3560
+
+weekly-summary-subject-template-ara
+
+قالب موضوعي لإشعارات الملخص الأسبوعي
+
+txt
+
+WEEKLY++_++SUMMARY++_++SUBJECT
+
+ara
+
+3561
+
+weekly-summary-subject-template-hin
+
+साप्ताहिक सारांश अधिसूचनाओं के लिए विषय टेम्पलेट
+
+txt
+
+WEEKLY++_++SUMMARY++_++SUBJECT
+
+hin
+
+3562
+
+weekly-summary-subject-template-kan
+
+ವಾರದ ಸಾರಾಂಶ ಅಧಿಸೂಚನೆಗಳಿಗಾಗಿ ವಿಷಯ ಟೆಂಪ್ಲೇಟ್
+
+txt
+
+WEEKLY++_++SUMMARY++_++SUBJECT
+
+kan
+
+3563
+
+weekly-summary-subject-template-tam
+
+வாராந்திர சுருக்க அறிவிப்புகளுக்கான தலைப்பு டெம்ப்ளேட்
+
+txt
+
+WEEKLY++_++SUMMARY++_++SUBJECT
+
+tam
+
+===== Steps to edit templates:
+
+[arabic]
+. To update an existing template, use the `PUT /templates` endpoint from
+the Master Data Service.
+. This allows modifications to attributes such as `name`, `description`,
+`fileFormatCode`, `fileText`, and other relevant fields, except
+`langCode` and `id`, which cannot be changed.

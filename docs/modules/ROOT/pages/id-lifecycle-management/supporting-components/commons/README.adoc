@@ -1,0 +1,37 @@
+== Commons
+
+=== Overview
+
+As the name suggests, Commons refers to all the common services (also
+called "`kernel`") that are used by other modules of MOSIP. The Kernel
+services are listed below:
+
+* https://github.com/mosip/mosip-openid-bridge/tree/release-1.2.0/kernel/kernel-auth-service[Auth
+Manager]
+* https://github.com/mosip/audit-manager/tree/release-1.2.0[Audit
+Manager]
+* https://github.com/mosip/commons/tree/release-1.2.0/kernel/kernel-notification-service[Notification]
+* https://github.com/mosip/commons/tree/release-1.2.0/kernel/kernel-otpmanager-service[OTP
+Manager]
+* link:id-generator.md[ID Generator]
+* https://github.com/mosip/commons/tree/release-1.2.0/kernel/kernel-pridgenerator-service[PRID
+Generator]
+* https://github.com/mosip/commons/tree/release-1.2.0/kernel/kernel-ridgenerator-service[RID
+Generator]
+
+=== API
+
+Refer https://mosip.github.io/documentation/1.2.0/1.2.0.html[API
+Documentation].
+
+=== Developer Guide
+
+To know more about the developer setups, read:
+
+[arabic]
+. https://docs.mosip.io/1.2.0/modules/commons/commons-developer-guide[Commons
+Developer Guide]
+. https://docs.mosip.io/1.2.0/modules/commons/audit-manager-developer-guide[Audit
+Manager Developers Guide]
+. https://docs.mosip.io/1.2.0/modules/commons/openid-bridge-developer-guide[OpenID-Bridge
+Developers Guide]

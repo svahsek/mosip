@@ -1,0 +1,113 @@
+== Foundational Trust Provider
+
+=== Overview
+
+This guide enables the Foundational Trust providers to use the PMP
+portal effectively. Below is the workflow:
+
+* Partner self-register through the portal.
+* Partner admin and uploads CA certificate.
+* Partner admin/ Partner uploads partner certificate.
+* Partner admin/ Partner creates FTM.
+* Partner admin/ Partner uploads certificate from the menu before
+approval/ rejection.
+* Partner admin approves/ rejects the FTM.
+
+==== Self-registration
+
+* The partner can register themselves on the MOSIP PMP portal by
+clicking *Register* on the landing page.
+* They need to fill up a form with the details below:
+** First and Last name
+** Organization Name
+** Partner type (Device Provider)
+** Address, e-mail, phone number
+** Username and password
+
+image:../../../../.gitbook/assets/ftm-partner-self-register1.PNG[../../../../.gitbook/assets/ftm-partner-self-register1]
+image:../../../../.gitbook/assets/ftm-partner-self-register2.PNG[../../../../.gitbook/assets/ftm-partner-self-register2]
+
+To view the details entered, click *Home* to see the dashboard.
+
+image:../../../../.gitbook/assets/ftm-partner-home-page.PNG[../../../../.gitbook/assets/ftm-partner-home-page]
+
+==== Upload of Certificates
+
+===== CA Certificate upload
+
+The Partner admin needs to upload the CA certificate to enable the
+partner to use the portal. To do so, the Partner admin:
+
+[arabic]
+. Clicks *Upload CA Certificate* option on the left navigation pane of
+the partner portal.
+. Selects the Partner Domain as FTM.
+. Chooses the certificate to upload (only files with extensions such as
+.cer or .pem).
+. Clicks *Upload*.
+
+The uploaded certificates can be viewed by clicking on
+`View Certificates-++>++ View`.
+
+===== Partner Certificate upload
+
+Similarly, the Partner certificates can be added by the Partner admin or
+partner.
+
+The certificate can be uploaded by clicking *Home-++>++ Upload
+Certificate -++>++ Upload*.
+
+image:../../../../.gitbook/assets/ftm-partner-cert-upload.PNG[../../../../.gitbook/assets/ftm-partner-cert-upload]
+
+image:../../../../.gitbook/assets/ftm-partner-cert-upload-success.PNG[../../../../.gitbook/assets/ftm-partner-cert-upload-success]
+
+The certificate can be viewed by clicking *Home-++>++ View Certificate
+-++>++View*.
+
+image:../../../../.gitbook/assets/ftm-partner-view-cert.PNG[../../../../.gitbook/assets/ftm-partner-view-cert]
+
+==== FTM Details
+
+===== Creating FTM Details
+
+The partner can create FTM details by,
+
+[arabic]
+. Clicking FTM Details -++>++ Create FTM
+. Fill up the information like Partner Name, Make and Model.
+. Clicking Save.
+
+image:../../../../.gitbook/assets/ftm-partner-makemodel-view.PNG[../../../../.gitbook/assets/ftm-partner-makemodel-view]
+
+image:../../../../.gitbook/assets/ftm-partner-create-make-model.PNG[../../../../.gitbook/assets/ftm-partner-create-make-model]
+
+image:../../../../.gitbook/assets/ftm-partner-create-makemodel-success.PNG[../../../../.gitbook/assets/ftm-partner-create-makemodel-success]
+
+===== FTM Certificate Upload
+
+The partner can upload FTM certificates by,
+
+[arabic]
+. Selecting *Upload Certificate* option from the Actions menu against
+the FTM created.
+. Entering the Partner Domain as FTM and choosing the certificate file.
+. Clicking Upload.
+
+image:../../../../.gitbook/assets/ftm-partner-chip-sub-menu.PNG[../../../../.gitbook/assets/ftm-partner-chip-sub-menu]
+
+image:../../../../.gitbook/assets/ftm-partner-cert-upload.PNG[../../../../.gitbook/assets/ftm-partner-cert-upload]
+
+===== Approval or rejection of the certificate
+
+The Partner Admin can choose to approve or reject the FTM certificate
+uploaded. Below illustrates the workflow:
+
+image:../../../../.gitbook/assets/partner-admin-ftm-details-view-page.PNG[../../../../.gitbook/assets/partner-admin-ftm-details-view-page]
+
+image:../../../../.gitbook/assets/partner-admin-ftm-details-actions.PNG[../../../../.gitbook/assets/partner-admin-ftm-details-actions]
+
+image:../../../../.gitbook/assets/partner-admin-ftm-details-approve-action.PNG[../../../../.gitbook/assets/partner-admin-ftm-details-approve-action]
+
+Finally, you can see the FTM activated.
+
+image:../../../../.gitbook/assets/ftm-active.png[../../../../.gitbook/assets/ftm-active]

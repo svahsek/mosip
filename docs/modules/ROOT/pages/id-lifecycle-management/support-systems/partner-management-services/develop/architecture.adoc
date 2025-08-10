@@ -1,0 +1,30 @@
+== Architecture
+
+==== *Partner Management Service*
+
+*Partner Management Service* provides various partner services like
+onboarding partners and providing partner data to other modules.
+
+The diagram below illustrates the relationship of this service to other
+MOSIP services.
+
+[arabic]
+. Certificates of partner are uploaded to
+https://docs.mosip.io/1.2.0/modules/keymanager[Key Manager] as part of
+onboarding.
+. Registration processor fetches ABIS datashare policy from PMS.
+. PMS sends notification messages to partners via notification service
+(of Kernel).
+. Audit logs are logged into Auditmanager.
+. https://docs.mosip.io/1.2.0/modules/id-repository[ID Repository]
+fetches credential data share partners and their polices from PMS.
+. All PMS data is stored in mosip++_++pms DB.
+. Certificates of Authentication Partners are sent to IDA module as IDA
+runs independently. The certificates are shared using
+https://docs.mosip.io/1.2.0/modules/datashare[Datashare] (which futher
+uses Websub to share data with IDA).
+. PMS invokes the client management endpoint of eSignet to register OIDC
+client
+
+Rest of the content can be referred to here:
+https://docs.mosip.io/1.2.0/modules/partner-management-services

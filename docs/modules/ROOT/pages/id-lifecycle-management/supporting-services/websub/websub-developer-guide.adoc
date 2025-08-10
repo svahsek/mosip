@@ -1,0 +1,64 @@
+== WebSub Developers Guide
+
+=== Overview
+
+https://docs.mosip.io/1.2.0/modules/websub[WebSub] module provides a
+common mechanism for communication between publishers of any kind of Web
+content and their subscribers, based on HTTP webhooks.
+
+Below is a list of tools required in WebSub:
+
+[arabic]
+. Ballerina (Swan-Lake)
+. Any IDE (like Vs Code)
+. Kafka
+. Postman (any HTTP Client)
+. Git
+
+==== Software setup
+
+[arabic]
+. Download https://ballerina.io/downloads/[Ballerina] and install it as
+per instructions. (Use `bal -v` to ensure installation and version).
+image:../../../.gitbook/assets/websub-version-check.png[../../../.gitbook/assets/websub-version-check]
+. Download https://kafka.apache.org/downloads[Kafka] and install it.
+
+==== Source code setup
+
+For the code setup, clone the repository and follow the guidelines
+mentioned in the
+https://docs.mosip.io/1.2.0/community/code-contributions[Code
+Contributions].
+
+==== Importing and building
+
+[arabic]
+. Open the hub and consolidator folders where `Ballerina.toml` is
+present.
+. Open the command prompt from the same folder.
+. Run the command `bal build` to build the hub and consolidator.
+. Open the project in VS Code either by `open with vs code` or from
+`File -++>++ Open Folder`.
+
+=== Environment setup
+
+[arabic]
+. Copy `websub-service.toml` and `websub-consolidator.toml` file from
+https://github.com/mosip/mosip-config[mosip-config repository] to hub
+and consolidator folder respectively and rename both of them as
+`Config.toml`(case-sensitive).
+image:../../../.gitbook/assets/websub-config-file-placement.png[../../../.gitbook/assets/websub-config-file-placement]
+. Run Configure and run Kafka, update `KAFKA++_++BOOTSTRAP++_++NODE` in
+`Config.toml` to point to your Kafka.
+
+=== Initialization and utilization of module
+
+[arabic]
+. WebSub consists of consolidator and hub.
+. Consolidator should be started first,
+`Got to consolidator -++>++ java -jar target/bin/++<++Jarname++>++`.
+(Config.toml should be in the same place where you are running this
+command).
+. Start WebSub with the same approach.
+. The APIs can be tried with the help of
+https://github.com/mosip/commons/tree/release-1.2.0/kernel/kernel-websubclient-api[kernel-websub-api].

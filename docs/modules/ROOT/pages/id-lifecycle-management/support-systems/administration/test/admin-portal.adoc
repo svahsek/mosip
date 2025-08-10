@@ -1,0 +1,68 @@
+== Admin Portal
+
+==== Overview 
+
+Welcome to the Admin Portal Collab Guide. The *Admin Portal* is a
+web-based application that allows administrative personnel to manage
+various master data sets. It provides functionalities to oversee
+resources such as registration centers, devices, machines, users, and
+security management. Admin users can also generate master keys, track
+registration status, retrieve lost RIDs, and resume paused packets.
+
+For a detailed breakdown of the Admin Portal features, please refer to
+the
+https://docs.mosip.io/1.2.0/modules/administration/admin-portal-user-guide[Administration
+Page].
+
+==== Pre-requisites 
+
+* Accessing the Admin portal in the Collab environment requires no
+complex setup.
+* All you need is a *username and password* to login to the
+https://iam.collab.mosip.net/auth/realms/mosip/protocol/openid-connect/auth?client_id=mosip-admin-client&redirect_uri=https://api-internal.collab.mosip.net/v1/admin/login-redirect/aHR0cHM6Ly9hZG1pbi5jb2xsYWIubW9zaXAubmV0Lw==&state=022130ef-ff8f-4ef0-b6da-dc473b82f5b4&response_type=code&scope=email[Admin
+Portal].
+* If you do not have credentials, you can request them
+https://forms.gle/CvUzXSPWQFJ7iBrL7[here]*.*
+
+==== Step-by-Step Guide 
+
+*Step 1:* Access the Admin Portal
+
+Visit the *Admin Portal* in the Collab environment by navigating to the
+https://iam.collab.mosip.net/auth/realms/mosip/protocol/openid-connect/auth?client_id=mosip-admin-client&redirect_uri=https://api-internal.collab.mosip.net/v1/admin/login-redirect/aHR0cHM6Ly9hZG1pbi5jb2xsYWIubW9zaXAubmV0Lw==&state=022130ef-ff8f-4ef0-b6da-dc473b82f5b4&response_type=code&scope=email[Admin
+Portal].
+
+*Step 2:* Log in to the Portal
+
+[arabic]
+. Enter your *username* and *password*.
+. Click *Login* to proceed.
+
+*Step 3:* Explore Admin Portal Features
+
+Once logged in, you can access the available features based on your
+role. Refer to the
+https://docs.mosip.io/1.2.0/modules/administration/admin-portal-user-guide[Admin
+Portal User Guide] for more details on specific functionalities.
+
+==== Additional Resources 
+
+Please watch this
+https://docs.mosip.io/1.2.0/modules/administration/admin-portal-user-guide#session-1[video]
+to learn more about the features in the Admin Portal.
+
+==== Get in Touch 
+
+If you require any assistance or encounter any issues during the testing
+and integration process, kindly reach out to us through the support
+mechanism provided below:
+
+[arabic]
+. Navigate to https://community.mosip.io/[Community].
+. Provide a detailed description of your issue, including: +
+[loweralpha]
+.. Steps to reproduce the problem. +
+.. Error messages, logs, or screenshots (if applicable) +
+.. Any other relevant details to help diagnose the issue
+
+*_We wish you a smooth experience with the Admin Portal collab guide!_*

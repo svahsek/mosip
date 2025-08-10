@@ -1,0 +1,11 @@
+== Deploy
+
+=== Build and deploy
+
+Refer to https://github.com/mosip/registration/tree/release-1.2.0[repo].
+
+=== Configurations
+
+Refer to
+https://github.com/mosip/registration/blob/release-1.2.0/docs/configuration.md[Configuration
+Guide].

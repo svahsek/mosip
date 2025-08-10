@@ -1,0 +1,145 @@
+== Object Store
+
+=== Overview
+
+Object Store is a storage module for MOSIP named as
+https://github.com/mosip/khazana[Khazana]. The module is an abstraction
+of storage layer used across
+https://github.com/mosip/registration-client[Registration Client],
+https://github.com/mosip/packet-manager[Packet Manager],
+https://github.com/mosip/durian[Datashare or Durian] for packets and
+biometric data.
+
+Khazana provides following adapters to store objects
+
+[arabic]
+. POSIX - Supports storage of packets on a filesystem. Its typically
+used by registration client to store packets locally on the machine.
+This adapter is not receommended for usage in low latency environments
+like packet manager.
+. S3 - https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[S3]
+is one of the well known API for object stores.
+https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3.html[AWS
+Java S3 Client] is used in Khazana to support any S3 compliant object
+storage solutions.
+. Swift - An object storage system from
+https://docs.openstack.org/swift/latest/getting_started.html[Openstack].
+Swift has published API’s and Khazana supports the same on experimental
+basis using https://joss.javaswift.org/[JOSS SDK]. This works with any
+Swift or Swift compliant object storage solutions.
+
+Object Store is used for following purpose wihin mosip
+
+[arabic]
+. Registration Client - Encrypted packets
+. Pre-registration - Uploaded Documents
+. Idrepo - Individual’s biometrics and documents
+. Datashare - On demand individual’s biometrics, documents and other
+information.
+
+As part of our sandbox deployment we have provided an example use case
+with https://www.minio.io[minio] for on-prem deployment and AWS S3 with
+AWS deployment. Object Store is installed as part of
+https://github.com/mosip/mosip-infra/tree/release-1.2.0/deployment/v3/external/object_store[default
+sandbox deployment].
+
+*Note:* Please note its important to choose the right partner for object
+storage and work with them to scale acordingly. Please follow the
+hardware estimate for Object Store based on respective Object store
+products.
+
+The below is the list of S3 Java API’s used by MOSIP. This can be used
+to understand the vendor compatibility. Khazana does not use any
+internal business logic and is purely an storage abstraction layer.
+
+[width="100%",cols="<50%,<50%",options="header",]
+|===
+|Java API Used by MOSIP |S3 Documentation URL
+|getConnection(bucketName).getObject(bucketName, finalObjectName)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#getObject-java.lang.String-java.lang.String-[public
+S3Object getObject(String bucketName&#44; String key)]
+
+|getConnection(bucketName).getObjectMetadata(bucketName,
+finalObjectName)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#getObjectMetadata-java.lang.String-java.lang.String-[public
+ObjectMetadata getObjectMetadata(String bucketName&#44; String key)]
+
+|doesBucketExistV2(bucketName)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#doesBucketExistV2-java.lang.String-[public
+boolean doesBucketExistV2(String bucketName)]
+
+|createBucket(bucketName)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#createBucket-java.lang.String-[public
+Bucket createBucket(String bucketName)]
+
+|getObjectMetadata()
+|link:++https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/S3Object.html#getObjectMetadata--++[public
+ObjectMetadata getObjectMetadata()]
+
+|getObjectMetadata().getUserMetadata()
+|link:++https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/ObjectMetadata.html#getUserMetadata--++[public
+Map++<++String&#44;String++>++ getUserMetadata()]
+
+|addUserMetadata(m.getKey(), m.getValue())
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/ObjectMetadata.html#addUserMetadata-java.lang.String-java.lang.String-[public
+void addUserMetadata(String key&#44; String value)]
+
+|PutObjectRequest(bucketName, finalObjectName,
+s3Object.getObjectContent(), objectMetadata)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/PutObjectRequest.html#PutObjectRequest-java.lang.String-java.lang.String-java.io.InputStream-com.amazonaws.services.s3.model.ObjectMetadata-[public
+PutObjectRequest(String bucketName&#44; String key&#44; InputStream
+input&#44; ObjectMetadata metadata)]
+
+|getRequestClientOptions()
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/AmazonWebServiceRequest.html#getRequestClientOptions-[public
+RequestClientOptions getRequestClientOptions()]
+
+|setReadLimit(readlimit)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/RequestClientOptions.html#setReadLimit-int-[public
+final void setReadLimit(int readLimit)]
+
+|putObject(putObjectRequest)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#putObject-com.amazonaws.services.s3.model.PutObjectRequest-[public
+PutObjectResult putObject(PutObjectRequest putObjectRequest)]
+
+|deleteObject(bucketName, objectName)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#deleteObject-java.lang.String-java.lang.String-[public
+void deleteObject(String bucketName&#44; String key)]
+
+|listObjects(account, searchPattern)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#listObjects-java.lang.String-java.lang.String-[public
+ObjectListing listObjects(String bucketName&#44; String prefix)]
+
+|getObjectSummaries()
+|link:++https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/ObjectListing.html#getObjectSummaries--++[public
+List getObjectSummaries()]
+
+|listObjects(searchPattern)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3.html#listObjects-java.lang.String-[public
+ObjectListing listObjects(String bucketName)]
+
+|getObjectSummaries()
+|link:++https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/ObjectListing.html#getObjectSummaries--++[public
+List getObjectSummaries()]
+
+|doesObjectExist(bucketName, finalObjectName)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3.html#doesObjectExist-java.lang.String-java.lang.String-[boolean
+doesObjectExist(String bucketName&#44; String objectName)]
+
+|GetObjectTaggingRequest(bucketName,finalObjectName)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/GetObjectTaggingRequest.html#GetObjectTaggingRequest-java.lang.String-java.lang.String-[public
+GetObjectTaggingRequest(String bucketName&#44; String key)]
+
+|getObjectTagging(getObjectTaggingRequest)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3.html#getObjectTagging-com.amazonaws.services.s3.model.GetObjectTaggingRequest-[GetObjectTaggingResult
+getObjectTagging(GetObjectTaggingRequest getObjectTaggingRequest)]
+
+|SetObjectTaggingRequest(bucketName,finalObjectName,objectTagging)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/SetObjectTaggingRequest.html#SetObjectTaggingRequest-java.lang.String-java.lang.String-com.amazonaws.services.s3.model.ObjectTagging-[public
+SetObjectTaggingRequest(String bucketName&#44; String key&#44;
+ObjectTagging tagging)]
+
+|setObjectTagging(setObjectTaggingRequest)
+|https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3.html#setObjectTagging-com.amazonaws.services.s3.model.SetObjectTaggingRequest-[SetObjectTaggingResult
+setObjectTagging(SetObjectTaggingRequest setObjectTaggingRequest)]
+|===

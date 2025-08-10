@@ -1,0 +1,206 @@
+== Functional Overview
+
+Resident Portal is a self-help web-b portal that can be used by the
+residents of a country to avail of the services related to their Unique
+Identification Number (UIN). The architecture, interface overview, and
+key services provided are discussed below:
+
+[arabic]
+. Architecture
+. Interface overview
+. Key Services
+[arabic]
+.. UIN services
+[arabic]
+... View My History
+... Secure My ID
+... Manage My VID
+... Track My Request
+... Download My Personalized Card
+... Update My Data
+... Share My Credential
+.. Get Information
+[arabic]
+... Supporting Document
+... Registration Center
+.. Verify Email ID/Phone number
+.. Get My UIN
+.. Booking an Appointment
+
+Below is a detailed explanation of each of the features along with the
+list of relevant APIs. 
+
+Modules/services that Resident services depends on
+
+=== Architecture
+
+=== Interface Overview
+
+==== Menu Bar
+
+The Resident Portal menu bar contains the following:
+
+[arabic]
+. *Font Size*- Residents can alter the size of the font based on their
+preferences.
+. *Language*- Residents can select the language of preference.
+. *Bell icon Notification*- Residents can view the notifications of all
+the asynchronous events in chronological order.
+
+==== *Profile Icon:*
+
+[arabic]
+. *Profile Icon*- Residents can view the following:
+[arabic]
+.. Name of the logged in user
+.. Photo of the logged in user
+.. Last login details
+.. Logout option
+
+==== Workspace
+
+A dashboard view to quickly locate the '`Key Services`'
+
+=== *Key Services*
+
+=== *UIN Services*
+
+==== *View My History*
+
+The residents can view the history of all the transactions associated
+with their logged-in UIN/ AID/ VID. They can also view their details and
+if any unaccounted entry is found, a report can be raised against the
+same.
+
+==== *Secure My ID*
+
+On clicking “Secure My ID”, the residents can view the status of all the
+authentication types. They can choose to lock or unlock authentication
+types like the following:
+
+[arabic]
+. Email OTP authentication
+. Phone OTP authentication
+. Demographic authentication
+. Fingerprint authentication
+. Iris authentication
+. Face authentication
+
+* *Fetch Authentication Types - Lock status of the individual*
++
++
++
++
++
+* *Applies the Authentication Types Lock/Unlock request in IDA*
++
+ +
++
++
++
++
++
+
+==== *Manage My VID*
+
+On clicking “Manage My VID”, the resident will be taken to a page where
+they can view details of the existing VIDs, generate new VID, revoke
+existing VIDs, or download a VID card.
+
+The following types of VIDs can be seen based on the VID policy:
+
+[arabic]
+. Perpetual VID
+. Temporary VID
+. One-time VID
+
+* *Fetch Active VIDs of the Individual*
+
+* *Revoke the VID of the Individual*
+
+* *Store the Credential Request ID and a new Event ID*
+
+* *Notify that the VID card is Ready to Download status*.
+
+* *Download PDF Card*
+
+==== *Track My Requests*
+
+On clicking “Track My Requests”, the residents can track the status of
+an Event ID (EID) associated with the logged-in UIN/ VID. They can also
+*view and download* the detailed information about the entered EID.
+
+==== *Download My Personalized Card*
+
+On clicking “Get Personalized Card”, the residents can select the data
+to be added to their credential. They can preview the chosen data and
+download it. Residents should select at least 3 attributes.
+
+* *Creates the personalized card and signs it*
+
+==== *Share My Data*
+
+On clicking “Share My Data”, the residents can choose the data to be
+shared with any of the registered partners to avail various third party
+services.
+
+* *Submits the share credential request*
+
+* *Notifies resident about the credential shared status for the event
+ID*
+
+==== *Update My Data*
+
+* *Fetch existing AID in progress*
+
+* *Submits the update request*
+
+* *Notifies that the UIN card is ready to Download status*
+
+* *Notify for IDENTITY++_++UPDATED for the Event Id*
+
+* *Get the Status for the AID*
+
+=== *Login With eSignet (OpenID Connect)*
+
+* *Validate the Access token and ID token*
+
+=== *Get Information*
+
+* Fetch Supporting Documents PDF +
+
+* *Fetch registration centers*
++
+ +
++
++
++
++
++
+
+===  *Verify Email ID/ Phone number*
+
+The residents can use this feature to verify their registered email ID
+or phone number.
+
+=== *Get My UIN*
+
+The residents can use this feature for one of the following:
+
+[arabic]
+. Download their UIN card
+. Check the status of their Application ID (AID)
+
+* *Get PDF card for AID if ready*
+
+* *Check if PDF card URL is notified by Digital card service*.
+
+* *Validates the Action token and ID token*. 
+
+=== *Book an appointment*
+
+The residents can book an appointment for registration using the
+pre-registration portal. To do so, they can click on “Book an
+appointment” tile which will redirect them to the pre-registration
+portal. To know more about pre-registration portal, refer to this link
+++[++https://docs.mosip.io/1.2.0/modules/pre-registration ++]++

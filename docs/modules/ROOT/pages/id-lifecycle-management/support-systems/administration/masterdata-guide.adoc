@@ -1,0 +1,155 @@
+== Masterdata Guide
+
+=== Overview
+
+Masterdata is the necessary base data to run MOSIP services. The data
+resides in
+https://github.com/mosip/admin-services/tree/release-1.2.0/db_scripts/mosip_master[`mosip++_++master`
+database]. This data needs to be customized for a country specific
+deployment.
+
+=== Populating masterdata
+
+Masterdata may be uploaded in the following manner:
+
+[arabic]
+. One-time bulk upload:
+[arabic]
+.. https://github.com/mosip/mosip-data/tree/release-1.2.0/mosip_master/xlsx[Default
+masterdata] (for sandbox installation): Using
+https://github.com/mosip/mosip-infra/tree/develop/deployment/v3/mosip/masterdata-loader[Helm
+chart]. The default data uploaded during sandbox installation is
+available in
+https://github.com/mosip/mosip-data/tree/release-1.2.0/mosip_master/xlsx[mosip-data].
+.. Country specific data: Using
+https://github.com/mosip/mosip-infra/tree/develop/deployment/v3/mosip/masterdata-loader[Python
+scripts].
+. Updates: Updates to tables may be done using the
+link:test/admin-portal-user-guide.md[Admin Portal].
+
+=== Creating country specific data
+
+The tables that need to be modified for country specific data are listed
+below. Other tables in `mosip++_++master` DB are either system-filled or
+pre-filled and not to be modified.
+
+==== Common guidelines
+
+* Copy Excel files from
+https://github.com/mosip/mosip-data/tree/release-1.2.0/mosip_master/xlsx[mosip-data]
+to a folder.
+* For all tables listed below modify `lang++_++code` and add
+corresponding rows for your
+link:../../supporting-services/module-configuration.md#languages[configured
+languages].
+* Modify the files for your deployment as per guide below.
+* Upload *first time* using scripts given
+https://github.com/mosip/mosip-infra/tree/release-1.2.0/deployment/v3/mosip/kernel/masterdata[here].
+* Subsequently, update data ONLY using
+link:test/admin-portal-user-guide.md[Admin Portal].
+
+==== Tables to be updated
+
+[width="100%",cols="8%,9%,83%",options="header",]
+|===
+|Category |Table |Guide
+|Documents |`doc++_++category` |Categories of documents to be captured
+
+| |`doc++_++type` |Specific documents related to a country
+
+| |`applicant++_++valid++_++document` |Mapping of document category,
+type and
+https://github.com/mosip/mosip-config/blob/develop3-v3/applicanttype.mvel[applicant
+type]
+
+|Location |`loc++_++hierarchy++_++list` |List of location hierarchy
+
+| |`location` |List of locations stored in a hierarchical format
+
+| |`loc++_++holiday` |Holidays specific to different locations. Used in
+registration centre creation.
+
+|Machine |`machine++_++type` |Example mobile, stationary. Refers to
+`machine++_++spec`.
+
+| |`machine++_++spec` |Model, make of the registration machine
+
+|ID Schema |`identity++_++schema` |Refer to
+link:../../identity-management/id-schema.md[ID Schema customisation].
+Update the JSON in `schema++_++json` column of
+https://github.com/mosip/mosip-data/tree/lts/mosip_master/xlsx/identity_schema.xlsx[`identity++_++schema.xlsx`]
+
+| |`dynamic++_++field` |Dynamic dropdowns used during data capture
+
+| |`id++_++type` |Only `name` and `descr` can be changed based on
+language
+
+| |`ui++_++spec` |UI specification for registration and pre-registration
+UI screens. See link:masterdata-guide.md[UI spec guides]
+
+|Registration client |`permitted++_++local++_++config` |List of
+changeable configurations by the operator
+
+| |`app++_++authentication++_++method` |Only `method++_++seq` can be
+changed
+
+| |`app++_++detail` |Only `name` and `descr` can be changed based on
+language
+
+| |`app++_++role++_++priority` |Only `priority` can be changed
+
+| |`authentication++_++method` |Only `method++_++seq` can be changed
+
+| |`reason++_++list` |List of reasons for a reason category
+
+| |`reason++_++category` |Only `name` and `descr` can be changed based
+on language
+
+|Registration center |`reg++_++center++_++type` |Type of center
+
+| |`registration++_++center` |List of registration centers
+
+| |`registration++_++center++_++h` |Historical data for any modification
+done on a registration center. One time intialization of this table
+identical to `registration++_++center`. Thereafter, the data will be
+system updated
+
+| |`reg++_++exceptional++_++holiday` |Exception holiday for a
+registration center
+
+| |`reg++_++working++_++nonworking` |Working and non-working day for a
+center
+
+|Biometrics |`biometric++_++attribute` |Only `name` and `descr` can be
+changed based on language
+
+| |`biometric++_++type` |Only `name` and `descr` can be changed based on
+language
+
+|Templates |`template` |Only `name`, `descr`, `file++_++txt` can be
+changed based on language
+
+| |`template++_++file++_++format` |Only `descr` can be changed based on
+language
+
+| |`template++_++type` |Only `descr` can be changed based on language
+
+|Others |`blocklisted++_++words` |List of blocked words
+
+| |`daysofweek++_++list` |Only `name` can be changed based on language
+
+| |`module++_++detail` |Only `name` and `descr` can be changed based on
+language
+
+| |`process++_++list` |Only `name` and `descr` can be changed based on
+language
+
+| |`status++_++list` |Only `descr` can be changed based on language
+
+| |`status++_++type` |Only `name` and `descr` can be changed based on
+language
+
+| |`title` |List of titles used in the country
+
+| |`zone` |List of administrative zones in a country
+|===

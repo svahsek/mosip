@@ -1,0 +1,55 @@
+== Packet Manager
+
+=== Overview
+
+Packet Manager performs the following functions:
+
+[arabic]
+. Reads/writes registration packets from/to the
+https://docs.mosip.io/1.2.0/id-lifecycle-management/supporting-components/persistence/object-store[Object
+Store].
+. Performs in-memory encryption and decryption of packets.
+. Performs security checks, checksum, file validations, ID object
+validations, etc. on the registration packet.
+. Provides packet information to other services via APIs. In case of
+multiple packets associated with an ID, pulls information from packets
+based on configured priority. (See
+https://github.com/mosip/mosip-config/blob/develop3-v3/application-default.properties[`packetmanager.default.priority`]).
+
+Packet Manager runs as a service and is also available as a library.
+
+image:../../../.gitbook/assets/packet-manager.png[../../../.gitbook/assets/packet-manager]
+
+The relationship of the Packet Manager with other services is explained
+here. 
+
+++{++% hint style="`info`" %} _*NOTE*: The numbers do not signify a
+sequence of operations or control flow. Arrows indicate data flow_
+++{++% endhint %}
+
+[arabic]
+. link:../../identity-management/resident-services/[Resident Services]
+uses the Packet Manager library to create packets.
+. link:../../identity-issuance/registration-processor/[Registration
+Processor] reads packet data using the Packet Manager service.
+. Packets are stored and retrieved from the
+https://docs.mosip.io/1.2.0/id-lifecycle-management/supporting-components/persistence/object-store[Object
+Store].
+. Audit logs.
+. Encryption and decryption of packet.
+. link:../../identity-issuance/registration-client/[Registration Client]
+uses the Packet Manager library to create packets.
+
+=== Packet structure
+
+Refer to link:registration-packet-structure.md[Registration Packet
+Structure].
+
+=== API
+
+Refer to https://mosip.github.io/documentation/1.2.0/1.2.0.html[API
+Documentation].
+
+=== Source code
+
+https://github.com/mosip/packet-manager/tree/release-1.2.0[Github repo].

@@ -1,0 +1,142 @@
+== Partner Management Portal
+
+=== Overview
+
+Partner management portal allows the partners to register themselves in
+MOSIP. With LTS release, the following types of partners can register
+themselves:
+
+[arabic]
+. Authentication Partners
+. Credential Partners(with limited features)
+. Device Providers
+. FTM Provider
+
+++{++% embed
+url="`https://www.youtube.com/watch?v=VseMUIfJ2Y8&list=PLF83tgjxrJvh6QVM27lxIYq5nlZx8rY8Z&index=3`"
+%}
+
+=== Partner roles
+
+[cols=",",options="header",]
+|===
+|Partner Type |Associated Role
+|Partner Admin |PARTNER++_++ADMIN
+|Policy Manager |POLICYMANAGER
+|Authentication Partner |AUTH++_++PARTNER
+|Credential Partner |CREDENTIAL++_++PARTNER
+|Device Provider |DEVICE++_++PROVIDER
+|FTM Provider |FTM++_++PROVIDER
+|===
+
+A Partner Admin can create Policies that are required for Authentication
+and Credential partners. The section below describes the types of
+policies that are supported by MOSIP.
+
+=== Home page
+
+image:../../../../.gitbook/assets/pms-home-page.png[../../../../.gitbook/assets/pms-home-page]
+
+=== Policies
+
+To create policies, policy groups should be defined. Policy groups can
+be considered as the regulatory bodies in a country, examples could be
+Telecom, Insurance, Banking, etc.
+
+==== Creation of Policy group
+
+* Login as `Partner Admin` into the PMS portal.
+* After successful login, on the left navigation pane, click on *Policy
+-++>++ Policy Group*.
+* The existing policy groups are listed on the screen and the new ones
+can be created.
+
+image:../../../../.gitbook/assets/pms-policy-groups.png[../../../../.gitbook/assets/pms-policy-groups]
+
+*To create Policy groups*
+
+* Click Policy -++>++ Policy Group -++>++ {plus}Create Policy Group
+* Enter the Policy group Name and Description and click *Save*.
+
+image:../../../../.gitbook/assets/pms-create-policy-groups.png[../../../../.gitbook/assets/pms-create-policy-groups]
+
+To search or filter any data pertaining to policy groups, use the filter
+menu.
+
+image:../../../../.gitbook/assets/pms-filter-policy-groups.png[../../../../.gitbook/assets/pms-filter-policy-groups]
+
+You can also change the status of policy group(Deactivate/Re-activate)
+or edit it using the Action menu as shown below.
+
+image:../../../../.gitbook/assets/pms-actionmenu-policy-groups.png[../../../../.gitbook/assets/pms-actionmenu-policy-groups]
+
+On successful creation of Policy groups, polices can be created under
+that group. MOSIP supports two types of policies, i.e., *Auth* policy
+and *Datashare* policy.
+
+=== Auth Policy
+
+By default, on clicking Auth policy, the screen displays the list of
+existing auth link:../partners.md#partner-policies[policies].
+
+image:../../../../.gitbook/assets/pms-auth-policy.png[../../../../.gitbook/assets/pms-auth-policy]
+
+==== Create an Auth policy
+
+[arabic]
+. Click *Auth Policy -++>++ Create Policy*.
+. Add the Name and Description.
+. From the dropdown, select the Policy group.
+. Add the Policies Data.
+. Click *Save*.
+
+image:../../../../.gitbook/assets/pms-create-auth-policy.png[../../../../.gitbook/assets/pms-create-auth-policy]
+
+_Note_: Once the policy is created, it will be in _Inactive_ state. You
+have to activate it before using it for a partner.
+
+==== Activate/edit Auth policy
+
+[arabic]
+. Select the policy you want to activate or edit.
+. From the Actions menu, select Activate/Edit.
+
+image:../../../../.gitbook/assets/pms-actionmenu-auth-policy.png[../../../../.gitbook/assets/pms-actionmenu-auth-policy]
+
+==== Search or filter data
+
+[arabic]
+. Use the filter menu.
+
+image:../../../../.gitbook/assets/pms-filter-auth-policy.png[../../../../.gitbook/assets/pms-filter-auth-policy]
+
+image:../../../../.gitbook/assets/pms-filter-results-auth-policy.png[../../../../.gitbook/assets/pms-filter-results-auth-policy]
+
+=== Data Share Policy
+
+Data Share policy can be created/edited in the same way as the steps
+mentioned in the previous section on `Auth policy` by using Data Share
+Policy menu options.
+
+image:../../../../.gitbook/assets/pms-data-share-policy.png[../../../../.gitbook/assets/pms-data-share-policy]
+
+=== Partner
+
+==== Self Registration
+
+Partners in MOSIP are created in a self-service mode. The partner visits
+the MOSIP partner management portal and requests for collaborating with
+MOSIP by providing basic details such as organization name and email-id,
+purpose of registration (how they want to collaborate with MOSIP - as a
+device provider, authentication partner, print partner, etc), basic
+credentials and performing an OTP based verification. Once these details
+are filled by the partner and a request is sent to MOSIP, the
+`Partner Admin` verifies the details of the partners and allows the
+partner to integrate with MOSIP.
+
+To know more about each of the partners, click:
+
+[arabic]
+. link:auth-credential-partner.md[Auth partner/ Credential partner]
+. link:device-provider-partner.md[Device Provide]
+. link:../../../../ftm-provider-partner.md[FTM Provider]

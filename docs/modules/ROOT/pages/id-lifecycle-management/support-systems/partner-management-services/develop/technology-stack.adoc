@@ -1,0 +1,239 @@
+== Technology Stack
+
+*PMS Portal UI:*
+
+The table below outlines the frameworks, tools, and technologies used in
+PMS Portal.
+
+[width="100%",cols="12%,4%,45%,39%",options="header",]
+|===
+|Tool / Technology |Version |Description |License
+|React JS |18.2.0 |React JS is used to develop the UI web application
+|https://github.com/angular/angular/blob/main/LICENSE[MIT License]
+
+|Node JS |21.7.3 |_Node_.++_++js++_++ is a JavaScript runtime built on
+Chrome’s V8 JavaScript engine.
+|https://github.com/nodejs/node/blob/main/LICENSE[MIT License]
+
+|Tailwind CSS |3.4.3 |Tailwind CSS is _a Utility-first CSS framework for
+building rapid custom UI_. |
+|===
+
+*Partner Management Services:*
+
+The table below outlines the frameworks, tools, and technologies
+employed by Partner Management Services.
+
+Tool / Technology
+
+Version (Java SE 21)
+
+Version (Java SE 11)
+
+Description
+
+License
+
+Java
+
+Java SE 21
+
+(Supports PMS 1.3.0.beta.1)
+
+Java SE 11
+
+(Supports older PMS versions)
+
+Language Runtime (used in Docker image)
+
+GNU GPL v2 with Classpath Exception
+
+Ubuntu Server
+
+20.04
+
+20.04
+
+Docker base image OS
+
+Free
+
+Spring Framework
+
+6.1.4
+
+5.x
+
+Application Framework
+
+Apache License 2.0
+
+Apache Commons
+
+Compatible with Spring 6
+
+Compatible with Spring 5
+
+Utility Libraries
+
+Apache License 2.0
+
+Hibernate
+
+6.4.4.Final
+
+5.2.17.Final
+
+ORM Framework
+
+Apache License 2.0
+
+Hibernate Validator
+
+8.0.1.Final
+
+6.0.12.Final
+
+Validation Framework
+
+Apache License 2.0
+
+Jackson
+
+2.15.4
+
+2.12.0
+
+JSON Marshal/Unmarshal
+
+Apache License 2.0
+
+JUnit
+
+4.x and above
+
+4.x and above
+
+Unit Testing Framework
+
+Common Public License v1.0
+
+Mockito
+
+3.4.3
+
+2.22.0
+
+Mocking Framework for Unit Testing
+
+MIT License
+
+Logback
+
+1.4.14
+
+1.1.6
+
+Logging Framework
+
+LGPL v2.1
+
+Apache Velocity
+
+1.7
+
+1.7
+
+Templating Engine
+
+Apache License 2.0
+
+Swagger (OpenAPI)
+
+OpenAPI 3
+
+OpenAPI 3
+
+API Documentation
+
+Apache License 2.0
+
+PostgreSQL Server
+
+Server:10
+
+Server:10
+
+Relational Database
+
+PostgreSQL License (BSD 2-Clause)
+
+SonarQube
+
+2025.1 LTA
+
+7.2
+
+Static Code Analysis
+
+Open Source License
+
+Micrometer Prometheus
+
+1.12.3
+
+1.4.2
+
+Metrics Collection
+
+Apache License 2.0
+
+Gson
+
+2.10.1
+
+2.8.5
+
+JSON Parser
+
+Apache License 2.0
+
+H2 Database
+
+2.2.224
+
+1.4.197
+
+In-memory DB for Testing
+
+EPL 1.0 / MPL 2.0
+
+Lombok
+
+1.18.30
+
+1.18.8
+
+Boilerplate Code Reduction
+
+MIT License
+
+iText PDF
+
+5.5.13.4
+
+5.5.13.3
+
+PDF Generation Library
+
+AGPL v3.0
+
+icu4j
+
+63.1
+
+63.1
+
+Unicode and Transliteration Utilities
+
+Unicode License

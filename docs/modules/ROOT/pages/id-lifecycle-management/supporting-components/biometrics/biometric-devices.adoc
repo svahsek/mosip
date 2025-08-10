@@ -1,0 +1,73 @@
+== Biometric Devices
+
+=== Overview
+
+Biometric devices capture individuals’ biometric data (fingerprint, iris
+scan, photo) and send it to a registration client or authentication
+client (app). The functional architecture of the various entities
+involved is shown below.
+
+image:../../../.gitbook/assets/sdk.png[../../../.gitbook/assets/sdk]
+
+=== Device types
+
+[width="100%",cols="11%,6%,13%,8%,62%",options="header",]
+|===
+|Purpose |Type |Subtype++*++ |Certification |Specification
+|Registration |Fingerprint |Slap scanner |SBI 1.0
+|https://docs.mosip.io/1.1.5/biometrics/biometric-specification#fingerprint[Fingerprint
+image spec]
+
+|Registration |Iris |Double eye scanner |SBI 1.0
+|https://docs.mosip.io/1.1.5/biometrics/biometric-specification#iris[Iris
+image spec]
+
+|Registration |Face |Camera |SBI 1.0
+|https://docs.mosip.io/1.1.5/biometrics/biometric-specification#face-capture[Face
+image spec]
+
+|Authentication |Fingerprint |Single finger scanner |SBI 2.0
+|https://docs.mosip.io/1.1.5/biometrics/biometric-specification#fingerprint[Fingerprint
+image spec]
+
+|Authentication |Iris |Single eye scanner |SBI 2.0
+|https://docs.mosip.io/1.1.5/biometrics/biometric-specification#iris[Iris
+image spec]
+
+|Authentication |Face |Camera |SBI 2.0
+|https://docs.mosip.io/1.1.5/biometrics/biometric-specification#face-capture[Face
+image spec]
+|===
+
+++*++ An adopter may choose to have different subtypes, however, the
+certification needs to be adhered to.
+
+=== Enrolment flow
+
+image:../../../.gitbook/assets/devices-enrolment.png[../../../.gitbook/assets/devices-enrolment]
+
+=== Authentication flow
+
+image:../../../.gitbook/assets/devices-authentication.png[../../../.gitbook/assets/devices-authentication]
+
+=== Compliance test kit
+
+Compliance of a device may be tested using an
+https://docs.mosip.io/compliance-tool-kit[Compliance Tool Kit (CTK)].
+
+=== Devices calculator
+
+The following calculator may be used to estimate the number of devices
+required for a rollout.
+
+https://github.com/mosip/documentation/blob/84384099540b09b265703e96644a944adcdd2f3b/docs/_files/mosip-devices-calculator.xlsx[MOSIPDevicesCalculator]
+
+=== Partners
+
+Providers of biometric devices are Partners of MOSIP and need to be
+onboarded to a given deployment of MOSIP. Specifically,
+
+* link:../../support-systems/partner-management-services/partners.md#device-partner-dp[Device
+Provider]
+* link:../../support-systems/partner-management-services/partners.md#ftm-partner-ftmp[FTM
+Provider]

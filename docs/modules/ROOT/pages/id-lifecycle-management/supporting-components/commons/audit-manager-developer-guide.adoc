@@ -1,0 +1,163 @@
+== Audit Manager Developers Guide
+
+=== Overview
+
+https://docs.mosip.io/1.2.0/modules/commons[Audit Manager] module
+provides audit-related functionalities.
+
+Below is a list of tools required for auditing:
+
+[arabic]
+. JDK 11
+. Any IDE (like Eclipse, IntelliJ IDEA)
+. Apache Maven (zip folder)
+. PostgreSQL
+. Any DB client (like DBeaver, pgAdmin)
+. Postman (any HTTP Client)
+. Git
+. Any Editor (like Vscode, Notepad{plus}{plus} etc optional)
+. lombok.jar (jar file)
+. settings.xml (document)
+
+==== Software setup
+
+{empty}1. Download https://projectlombok.org/download[lombok.jar] and
+https://github.com/mosip/documentation/tree/1.2.0/docs/_files/commons/settings.xml[settings.xml].
+
+{empty}2. Unzip Apache Maven and move `settings.xml` to the "`conf`"
+folder `++<++apache maven unzip path++>\++conf`.
+
+{empty}3. Install Eclipse, open the `lombok.jar` file, and click
+`Install/Update`.
+image:../../../.gitbook/assets/lombok-configuration.png[../../../.gitbook/assets/lombok-configuration]
+
+{empty}4. Check the Eclipse installation folder to see if the
+`lombok.jar` is added.
+
+{empty}5. Configure the JDK (Standard VM) with your Eclipse by
+traversing through `Preferences → Java → Installed JREs`.
+
+image:../../../.gitbook/assets/installed-jre.png[../../../.gitbook/assets/installed-jre]
+
+==== Source code setup
+
+For the code setup, clone the repository and follow the guidelines
+mentioned in the
+https://docs.mosip.io/1.2.0/community/code-contributions[Code
+Contributions].
+
+==== Importing and building
+
+[arabic]
+. Open the project folder where `pom.xml` is present.
+. Open the command prompt from the same folder.
+. Run the command `mvn clean install -Dgpg.skip=true -DskipTests=true`
+to build the project.
+. After building, open Eclipse and select
+`Import Projects → Maven → Existing Maven Projects → Next → Browse to project directory → Finish`.
+. After successfully importing of project, update the project by
+right-clicking on `Project → Maven → Update Project`.
+
+image:../../../.gitbook/assets/import-project.png[../../../.gitbook/assets/import-project]
+
+=== Environment setup
+
+{empty}1. Download
+https://oss.sonatype.org/#nexus-search;gav~~kernel-auth-adapter~1.2.0-SNAPSHOT~~[Auth
+adapter] and add to project
+`Libraries → Classpath → Add External JARs → Select Downloaded JAR → Add → Apply and Close`.
+
+image:../../../.gitbook/assets/add-external-library.png[../../../.gitbook/assets/add-external-library]
+
+{empty}2. Clone https://github.com/mosip/mosip-config[mosip-config
+repository].
+
+{empty}3. Refer
+https://github.com/mosip/audit-manager/tree/release-1.2.0/db_scripts/README.md[Audit-DB-deploy]
+to deploy local DB.
+
+{empty}4. The audit uses two property files, `kernel-default` and
+`application-default`. Please configure them as needed. For instance,
+
+* Update the `mosip.kernel.auditmanager-service-logs-location` property
+to update the location of log files.
+* Secrets can be encrypted using
+https://cloud.spring.io/spring-cloud-config/reference/html/#_encryption_and_decryption[config
+server].
+* Update URL’s in property files.(It can be either pointed to any
+remotely or locally deployed services)
+
+{empty}5. Download
+https://oss.sonatype.org/#nexus-search;gav~~kernel-config-server~1.2.0-SNAPSHOT~~[kernel-config-server.jar].
+For Windows, download
+link:../../../_files/commons/config-server-start.bat[config-server-start.bat],
+linux users can run
+
+`java -jar -Dspring.profiles.active=native -Dspring.cloud.config.server.native.search-locations=file:++{++mosip-config-mt++_++folder++_++path}/config -Dspring.cloud.config.server.accept-empty=true -Dspring.cloud.config.server.git.force-pull=false -Dspring.cloud.config.server.git.cloneOnStart=false -Dspring.cloud.config.server.git.refreshRate=0 ++{++jarName}`
+.
+
+{empty}6. Run the server by opening the `config-server-start.bat` file.
+
+image:../../../.gitbook/assets/run-server.png[../../../.gitbook/assets/run-server]
+
+{empty}7. To verify the config-server, hit the below URL:
+
+`http://localhost:51000/config/++{++spring.profiles.active}/++{++spring.cloud.config.name}/++{++spring.cloud.config.label}`
+for instance `http://localhost:51000/config/kernel/env/master`.
+
+=== Initialization and utilization of module
+
+[arabic]
+. Audit REST service consist of `bootstrap.properties` file in
+`src/main/resources`.
+. Below properties needed to be modified in order to connect to the
+config server:
++
+....
+spring.cloud.config.uri=<config server uri>
+spring.cloud.config.label=<branch of config repo>
+spring.profiles.active=default
+....
+. Services can be run using
+`Run As -++>++ Spring Boot App/Java Application`.
+. For API documentation, refer https://docs.mosip.io/1.2.0/api[here].
+. The API’s can be tried with the help of *Swagger-UI* and *Postman*.
+. Swagger-UI of service can be accessed from
+`(https/http)://(++<++domain++>++/++<++host++>++:++<++port++>++)/++<++context-path++>++/swagger-ui/index.html?configUrl=++<++contect-path++>++/v3/api-docs/swagger-config`
+for instance
+`https://dev2.mosip.net/v1/auditmanager/swagger-ui/index.html?configUrl=/v1/auditmanager/v3/api-docs/swagger-config`.
+. The API’s can be tried using postman by copying CURL command below,
+updating host and importing in Postman.
+
+....
+curl -X 'POST' \
+  'https://<host>/v1/auditmanager/audits' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "id": "string",
+  "version": "string",
+  "requesttime": "2022-04-20T12:23:59.300Z",
+  "metadata": {},
+  "request": {
+    "eventId": "string",
+    "eventName": "string",
+    "eventType": "string",
+    "actionTimeStamp": "2022-04-20T12:23:59.300Z",
+    "hostName": "string",
+    "hostIp": "string",
+    "applicationId": "string",
+    "applicationName": "string",
+    "sessionUserId": "string",
+    "sessionUserName": "string",
+    "id": "string",
+    "idType": "string",
+    "createdBy": "string",
+    "moduleName": "string",
+    "moduleId": "string",
+    "description": "string"
+  }
+}'
+....
+
+image:../../../.gitbook/assets/postman-import-curl.png[../../../.gitbook/assets/postman-import-curl]
