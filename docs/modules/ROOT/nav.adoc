@@ -5,118 +5,19 @@
 
 * Id Lifecycle Management
 ** Identity Issuance
-*** Android Registration Client
-**** Deploy
-***** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/deploy/android-registration-client-configuration.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/deploy/README.adoc[]
-**** Develop
-***** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/develop/android-registration-client-developer-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/develop/README.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/develop/technology-stack.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/develop/ui-spec-documentation.adoc[]
-**** Overview
-***** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/overview/features.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/overview/README.adoc[]
-**** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/README.adoc[]
-**** Test
-***** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/test/android-registration-client-user-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/test/collab-android-reg-client.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/test/README.adoc[]
-*** ID Repository
-**** xref:pages/id-lifecycle-management/identity-issuance/id-repository/custom-handle.adoc[]
-**** xref:pages/id-lifecycle-management/identity-issuance/id-repository/id-repository-credential-request-generator-service-developer-guide.adoc[]
-**** xref:pages/id-lifecycle-management/identity-issuance/id-repository/id-repository-identity-service-developer-guide.adoc[]
-**** xref:pages/id-lifecycle-management/identity-issuance/id-repository/id-repository-vid-service-developer-guide.adoc[]
-**** xref:pages/id-lifecycle-management/identity-issuance/id-repository/README.adoc[]
-**** xref:pages/id-lifecycle-management/identity-issuance/id-repository/well-known.adoc[]
-*** Pre-registration
-**** Develop
-***** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/develop/pre-registration-developer-setup.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/develop/pre-registration-ui-specifications.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/develop/README.adoc[]
-**** Overview
-***** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/overview/features.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/overview/README.adoc[]
-**** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/README.adoc[]
-**** Test
-***** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/test/collab-pre-registration-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/test/pre-registration-user-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/test/README.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/test/try-it-out.adoc[]
+*** xref:pages/id-lifecycle-management/identity-issuance/android-registration-client/README.adoc[]
+*** xref:pages/id-lifecycle-management/identity-issuance/id-repository/README.adoc[]
+*** xref:pages/id-lifecycle-management/identity-issuance/pre-registration/README.adoc[]
+*** xref:pages/id-lifecycle-management/identity-issuance/registration-client/README.adoc[]
+*** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/README.adoc[]
 *** xref:pages/id-lifecycle-management/identity-issuance/README.adoc[]
-*** Registration Client
-**** Deploy
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/deploy/operator-onboarding.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/deploy/README.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/deploy/registration-client-configuration.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/deploy/registration-client-installation-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/deploy/registration-client-settings-page.adoc[]
-**** Develop
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/develop/README.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/develop/registration-client-developers-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/develop/registration-client-ui-specifications.adoc[]
-**** Overview
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/overview/features.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/overview/README.adoc[]
-**** xref:pages/id-lifecycle-management/identity-issuance/registration-client/README.adoc[]
-**** xref:pages/id-lifecycle-management/identity-issuance/registration-client/registration-client-tus-protocol.adoc[]
-**** Test
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/test/collab-reg-client-setup-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/test/README.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/test/registration-client-user-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-client/test/try-it-out.adoc[]
-*** Registration Processor
-**** Deploy
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/deploy/configurations-details.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/deploy/deploy.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/deploy/README.adoc[]
-**** Develop
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/develop/README.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/develop/registration-processor-developers-guide.adoc[]
-**** Overview
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/overview/features.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/overview/README.adoc[]
-**** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/README.adoc[]
-**** Test
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/test/credential-requestor-stage.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/test/manual-adjudication-and-verification.adoc[]
-***** xref:pages/id-lifecycle-management/identity-issuance/registration-processor/test/README.adoc[]
-
 ** Identity Management
 *** xref:pages/id-lifecycle-management/identity-management/id-schema.adoc[]
 *** xref:pages/id-lifecycle-management/identity-management/identifiers.adoc[]
 *** xref:pages/id-lifecycle-management/identity-management/README.adoc[]
-*** Resident Services
-**** Deploy
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/deploy/browsers-supported.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/deploy/README.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/deploy/resident-portal-configuration-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/deploy/resident-services-configure-resident-oidc-client.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/deploy/resident-services-deployment-guide.adoc[]
-**** Develop
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/develop/README.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/develop/resident-portal-ui-specifications.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/develop/resident-services-developer-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/develop/resident-services-ui-developer-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/develop/technology-stack.adoc[]
-**** Overview
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/overview/features.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/overview/README.adoc[]
-**** xref:pages/id-lifecycle-management/identity-management/resident-services/README.adoc[]
-**** Test
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/test/collab-resident-portal-guide.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/test/functional-overview.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/test/README.adoc[]
-***** xref:pages/id-lifecycle-management/identity-management/resident-services/test/resident-portal-user-guide.adoc[]
-
+*** xref:pages/id-lifecycle-management/identity-management/resident-services/README.adoc[]
 ** Identity Verification
-*** ID Authentication Services
-**** xref:pages/id-lifecycle-management/identity-verification/id-authentication-services/id-authentication-internal-service-developer-guide.adoc[]
-**** xref:pages/id-lifecycle-management/identity-verification/id-authentication-services/id-authentication-otp-service-developer-guide.adoc[]
-**** xref:pages/id-lifecycle-management/identity-verification/id-authentication-services/id-authentication-service-developer-guide.adoc[]
-**** xref:pages/id-lifecycle-management/identity-verification/id-authentication-services/mosip-authentication-sdk.adoc[]
-**** xref:pages/id-lifecycle-management/identity-verification/id-authentication-services/normalization-reference-impl.adoc[]
-**** xref:pages/id-lifecycle-management/identity-verification/id-authentication-services/README.adoc[]
+*** xref:pages/id-lifecycle-management/identity-verification/id-authentication-services/README.adoc[]
 *** xref:pages/id-lifecycle-management/identity-verification/id-authentication.adoc[]
 *** xref:pages/id-lifecycle-management/identity-verification/README.adoc[]
 
@@ -124,106 +25,33 @@
 
 * Support Systems
 ** Administration
-*** Develop
-**** xref:pages/support-systems/administration/develop/admin-services-developers-guide.adoc[]
-**** xref:pages/support-systems/administration/develop/README.adoc[]
 *** xref:pages/support-systems/administration/masterdata-guide.adoc[]
 *** xref:pages/support-systems/administration/README.adoc[]
-*** Test
-**** xref:pages/support-systems/administration/test/admin-portal-user-guide.adoc[]
-**** xref:pages/support-systems/administration/test/admin-portal.adoc[]
-**** xref:pages/support-systems/administration/test/README.adoc[]
-**** xref:pages/support-systems/administration/test/try-it-out.adoc[]
 ** Partner Management Services
-*** Deploy
-**** xref:pages/support-systems/partner-management-services/deploy/api-changes-with-pms-revamp.adoc[]
-**** xref:pages/support-systems/partner-management-services/deploy/pms-configuration-guide.adoc[]
-**** xref:pages/support-systems/partner-management-services/deploy/README.adoc[]
-*** Develop
-**** xref:pages/support-systems/partner-management-services/develop/architecture.adoc[]
-**** xref:pages/support-systems/partner-management-services/develop/backend-developers-guide.adoc[]
-**** xref:pages/support-systems/partner-management-services/develop/browsers-supported.adoc[]
-**** xref:pages/support-systems/partner-management-services/develop/build-and-development-guide.adoc[]
-**** xref:pages/support-systems/partner-management-services/develop/load-email-templates-for-notifications-in-master-data.adoc[]
-**** xref:pages/support-systems/partner-management-services/develop/new-language-support.adoc[]
-**** xref:pages/support-systems/partner-management-services/develop/README.adoc[]
-**** xref:pages/support-systems/partner-management-services/develop/technology-stack.adoc[]
-**** xref:pages/support-systems/partner-management-services/develop/ui-developers-guide.adoc[]
-*** Functional Overview
-**** xref:pages/support-systems/partner-management-services/functional-overview/collab-pmp-guide.adoc[]
-**** xref:pages/support-systems/partner-management-services/functional-overview/device-provider.adoc[]
-**** xref:pages/support-systems/partner-management-services/functional-overview/end-user-guide.adoc[]
-**** xref:pages/support-systems/partner-management-services/functional-overview/ftm-chip-provider.adoc[]
-**** xref:pages/support-systems/partner-management-services/functional-overview/partner-administration.adoc[]
-**** xref:pages/support-systems/partner-management-services/functional-overview/pms-notification.adoc[]
-**** xref:pages/support-systems/partner-management-services/functional-overview/policy-manager.adoc[]
-**** xref:pages/support-systems/partner-management-services/functional-overview/README.adoc[]
-**** xref:pages/support-systems/partner-management-services/functional-overview/try-it-out.adoc[]
-*** Overview
-**** xref:pages/support-systems/partner-management-services/overview/features.adoc[]
-**** xref:pages/support-systems/partner-management-services/overview/README.adoc[]
-*** xref:pages/support-systems/partner-management-services/partners.adoc[]
-*** PMS Existing
-**** xref:pages/support-systems/partner-management-services/pms-existing/auth-credential-partner.adoc[]
-**** xref:pages/support-systems/partner-management-services/pms-existing/device-provider-partner.adoc[]
-**** xref:pages/support-systems/partner-management-services/pms-existing/ftm-partner.adoc[]
-**** xref:pages/support-systems/partner-management-services/pms-existing/partner-management-portal.adoc[]
-**** xref:pages/support-systems/partner-management-services/pms-existing/partner-management-services-developer-setup.adoc[]
-**** xref:pages/support-systems/partner-management-services/pms-existing/partner-policies.adoc[]
-**** xref:pages/support-systems/partner-management-services/pms-existing/README.adoc[]
 *** xref:pages/support-systems/partner-management-services/README.adoc[]
-** xref:pages/support-systems/README.adoc[]
 ** Reporting
-*** xref:pages/support-systems/reporting/anonymous-profiling-support.adoc[]
 *** xref:pages/support-systems/reporting/README.adoc[]
 
 * Supporting Components
 ** Biometrics
-*** xref:pages/supporting-components/biometrics/abis-api.adoc[]
-*** xref:pages/supporting-components/biometrics/abis.adoc[]
-*** xref:pages/supporting-components/biometrics/biometric-devices.adoc[]
-*** xref:pages/supporting-components/biometrics/biometric-sdk.adoc[]
-*** xref:pages/supporting-components/biometrics/biometric-specification.adoc[]
-*** xref:pages/supporting-components/biometrics/cbeff-xml.adoc[]
-*** xref:pages/supporting-components/biometrics/ftm.adoc[]
-*** xref:pages/supporting-components/biometrics/mds-specification.adoc[]
 *** xref:pages/supporting-components/biometrics/README.adoc[]
-*** xref:pages/supporting-components/biometrics/sbispec.adoc[]
 ** Commons
-*** xref:pages/supporting-components/commons/audit-manager-developer-guide.adoc[]
-*** xref:pages/supporting-components/commons/commons-developer-guide.adoc[]
-*** xref:pages/supporting-components/commons/id-generator.adoc[]
-*** xref:pages/supporting-components/commons/openid-bridge-developer-guide.adoc[]
 *** xref:pages/supporting-components/commons/README.adoc[]
 ** xref:pages/supporting-components/datashare.adoc[]
 ** xref:pages/supporting-components/keycloak.adoc[]
 ** Packet Manager
 *** xref:pages/supporting-components/packet-manager/README.adoc[]
-*** xref:pages/supporting-components/packet-manager/registration-packet-structure.adoc[]
 ** Persistence
-*** xref:pages/supporting-components/persistence/object-store.adoc[]
-*** xref:pages/supporting-components/persistence/postgres-db.adoc[]
 *** xref:pages/supporting-components/persistence/README.adoc[]
 ** Quality Manager
-*** xref:pages/supporting-components/quality-manager/manual.adoc[]
 *** xref:pages/supporting-components/quality-manager/README.adoc[]
-*** Test Automation
-**** xref:pages/supporting-components/quality-manager/test-automation/api-test-rig-automation.adoc[]
-**** xref:pages/supporting-components/quality-manager/test-automation/automation-testing.adoc[]
-**** xref:pages/supporting-components/quality-manager/test-automation/dsl-test-rig-automation.adoc[]
-**** xref:pages/supporting-components/quality-manager/test-automation/README.adoc[]
-**** xref:pages/supporting-components/quality-manager/test-automation/ui-test-rig-automation.adoc[]
 ** xref:pages/supporting-components/README.adoc[]
 
 * Supporting Services
 ** Keymanager
-*** xref:pages/supporting-services/keymanager/hsm.adoc[]
-*** xref:pages/supporting-services/keymanager/keymanager-developer-guide.adoc[]
-*** xref:pages/supporting-services/keymanager/keys.adoc[]
 *** xref:pages/supporting-services/keymanager/README.adoc[]
 ** xref:pages/supporting-services/mock-services.adoc[]
 ** xref:pages/supporting-services/module-configuration.adoc[]
 ** xref:pages/supporting-services/README.adoc[]
 ** Websub
 *** xref:pages/supporting-services/websub/README.adoc[]
-*** xref:pages/supporting-services/websub/websub-developer-guide.adoc[]
