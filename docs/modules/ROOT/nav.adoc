@@ -1,7 +1,12 @@
-* xref:index.adoc[Home]
-* xref:api-changes-with-pms-revamp.adoc[API Changes with PMS Revamp]
-* xref:pms-configuration-guide.adoc[PMS Configuration Guide]
-* xref:README.adoc[README]
+* xref:index.adoc[MOSIP]
+** xref:api-changes-with-pms-revamp.adoc[API Changes with PMS Revamp]
+** xref:pms-configuration-guide.adoc[PMS Configuration Guide]
+** xref:README.adoc[README]
+
+
+* Setup
+
+* Interoperability
 
 * ID Lifecycle Management
 ** xref:id-lifecycle-management/README.adoc[ID Lifecycle Management]
@@ -22,7 +27,7 @@
 *** xref:id-lifecycle-management/identity-verification/id-authentication.adoc[ID Authentication]
 *** xref:id-lifecycle-management/identity-verification/id-authentication-services/README.adoc[ID Authentication Services]
 
-* Support Systems
+** Support Systems
 ** xref:id-lifecycle-management/support-systems/README.adoc[Support Systems Overview]
 ** Administration
 *** xref:id-lifecycle-management/support-systems/administration/README.adoc[Administration Overview]
@@ -32,7 +37,7 @@
 ** Reporting
 *** xref:id-lifecycle-management/support-systems/reporting/README.adoc[Reporting]
 
-* Supporting Components
+** Supporting Components
 ** xref:id-lifecycle-management/supporting-components/README.adoc[Supporting Components Overview]
 ** xref:id-lifecycle-management/supporting-components/datashare.adoc[Datashare]
 ** xref:id-lifecycle-management/supporting-components/keycloak.adoc[Keycloak]
@@ -47,7 +52,7 @@
 ** Quality Manager
 *** xref:id-lifecycle-management/supporting-components/quality-manager/README.adoc[Quality Manager]
 
-* Supporting Services
+** Supporting Services
 ** xref:id-lifecycle-management/supporting-services/README.adoc[Supporting Services Overview]
 ** xref:id-lifecycle-management/supporting-services/mock-services.adoc[Mock Services]
 ** xref:id-lifecycle-management/supporting-services/module-configuration.adoc[Module Configuration]
@@ -55,3 +60,7 @@
 *** xref:id-lifecycle-management/supporting-services/keymanager/README.adoc[Key Manager]
 ** Websub
 *** xref:id-lifecycle-management/supporting-services/websub/README.adoc[WebSub]
+
+
+* Roadmap and Releases
+* General
